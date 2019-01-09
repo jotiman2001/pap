@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="7F97C4D323B82AF2">
-  <PROJECT FORMAT="1.00" NAME="Gestattung eines vorubergehenden Gaststaettenbetriebes" AUTHOR="jap19" CREATED="2019.01.08 22:18:34" MODIFIED="2019.01.09 09:26:58">
+<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="7C7C92E7EDFC42C8">
+  <PROJECT FORMAT="1.00" NAME="Gestattung eines vorubergehenden Gaststaettenbetriebes" AUTHOR="jap19" CREATED="2019.01.08 22:18:34" MODIFIED="2019.01.09 16:17:11">
     <DIAGRAMS>
-      <DIAGRAM FORMAT="1.00" ID="0" NAME="Hauptprogramm 1" CREATED="2019.01.08 22:19:04" MODIFIED="2019.01.09 09:26:58">
-        <LAYOUT FORMAT="1.00" COLUMNS="2" ROWS="10">
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="page 10" CREATED="2019.01.08 22:19:04" MODIFIED="2019.01.09 16:17:11">
+        <LAYOUT FORMAT="1.00" COLUMNS="2" ROWS="11">
           <ENTRIES>
             <ENTRY COLUMN="0" ROW="0" ANCHOR="True">
               <FIGURE SUBTYPE="PapTitle" FORMAT="1.00" ID="0">
-                <TEXT><![CDATA[Hauptprogramm 1]]></TEXT>
+                <TEXT><![CDATA[page 10]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="1">
@@ -18,9 +18,9 @@
             <ENTRY COLUMN="0" ROW="2">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="6">
                 <TEXT><![CDATA[10
-betrieben true/false
-Flaschenausschank true/false
-flies true/false]]></TEXT>
+betrieben : true/false
+Flaschenausschank : true/false
+flies : true/false]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="3">
@@ -31,9 +31,9 @@ flies true/false]]></TEXT>
             <ENTRY COLUMN="0" ROW="4">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="10">
                 <TEXT><![CDATA[12
-vorhanden true/false
-install true/false
-Durchlaufkühler true/false]]></TEXT>
+vorhanden : true/false
+installiert : true/false
+Durchlaufkühler : true/false]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="5">
@@ -49,15 +49,21 @@ Durchlaufkühler true/false]]></TEXT>
             <ENTRY COLUMN="0" ROW="7">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="18">
                 <TEXT><![CDATA[13
-Glasspuele true/false]]></TEXT>
+Glasspuele : true/false]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="8">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="33">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="37">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="9">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="36">
+                <TEXT><![CDATA[14
+Erklärung : true/false]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="10">
               <FIGURE SUBTYPE="PapEnd" FORMAT="1.00" ID="2">
                 <TEXT><![CDATA[Ende]]></TEXT>
               </FIGURE>
@@ -69,9 +75,10 @@ Glasspuele true/false]]></TEXT>
             </ENTRY>
             <ENTRY COLUMN="1" ROW="4">
               <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="12">
-                <TEXT><![CDATA[vorhanden false
-install false
-Durchlaufkühler false]]></TEXT>
+                <TEXT><![CDATA[10
+vorhanden : false
+install : false
+Durchlaufkühler : false]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="1" ROW="5">
@@ -86,11 +93,12 @@ Durchlaufkühler false]]></TEXT>
             </ENTRY>
             <ENTRY COLUMN="1" ROW="7">
               <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="20">
-                <TEXT><![CDATA[Glasspuele false]]></TEXT>
+                <TEXT><![CDATA[10
+Glasspuele : false]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="1" ROW="8">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="31">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="39">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
@@ -104,15 +112,16 @@ Durchlaufkühler false]]></TEXT>
           <CONNECTION FORMAT="1.00" ID="14" FROM="8" TO="13" TEXT="false" />
           <CONNECTION FORMAT="1.00" ID="15" FROM="13" TO="12" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="17" FROM="16" TO="18" TEXT="true" />
-          <CONNECTION FORMAT="1.00" ID="34" FROM="33" TO="2" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="19" FROM="18" TO="37" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="22" FROM="16" TO="21" TEXT="false" />
           <CONNECTION FORMAT="1.00" ID="25" FROM="21" TO="20" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="27" FROM="12" TO="26" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="11" FROM="10" TO="28" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="30" FROM="26" TO="28" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="32" FROM="20" TO="31" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="19" FROM="18" TO="33" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="35" FROM="31" TO="33" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="40" FROM="20" TO="39" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="34" FROM="36" TO="2" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="41" FROM="39" TO="37" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="38" FROM="37" TO="36" TEXT="" />
         </CONNECTIONS>
       </DIAGRAM>
     </DIAGRAMS>
