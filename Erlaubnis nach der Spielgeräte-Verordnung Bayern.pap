@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="48C722CE8DE3D8BE">
+  <PROJECT FORMAT="1.00" NAME="Erlaubnis nach der Spielgeräte-Verordnung Bayern" AUTHOR="jp" CREATED="2019.01.09 16:28:43" MODIFIED="2019.01.09 16:50:55">
+    <DIAGRAMS>
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="Hauptprogramm 1" CREATED="2019.01.09 16:28:48" MODIFIED="2019.01.09 16:50:55">
+        <LAYOUT FORMAT="1.00" COLUMNS="1" ROWS="19">
+          <ENTRIES>
+            <ENTRY COLUMN="0" ROW="0" ANCHOR="True">
+              <FIGURE SUBTYPE="PapTitle" FORMAT="1.00" ID="0">
+                <TEXT><![CDATA[Hauptprogramm 1]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="1">
+              <FIGURE SUBTYPE="PapStart" FORMAT="1.00" ID="1">
+                <TEXT><![CDATA[Start]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="2">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="4">
+                <TEXT><![CDATA[1
+auswahl.auswahl: 1,2,3,4,5
+antragsteller.nat_pers: true,false
+
+.]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="3">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="6">
+                <TEXT><![CDATA[2]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="4">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="8">
+                <TEXT><![CDATA[14]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="5">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="10">
+                <TEXT><![CDATA[10]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="6">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="12">
+                <TEXT><![CDATA[33]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="7">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="14">
+                <TEXT><![CDATA[11]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="8">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="16">
+                <TEXT><![CDATA[12]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="9">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="18">
+                <TEXT><![CDATA[13]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="10">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="20">
+                <TEXT><![CDATA[8]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="11">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="22">
+                <TEXT><![CDATA[3]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="12">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="24">
+                <TEXT><![CDATA[4]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="13">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="26">
+                <TEXT><![CDATA[5]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="14">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="28">
+                <TEXT><![CDATA[6]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="15">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="30">
+                <TEXT><![CDATA[7]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="16">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="32">
+                <TEXT><![CDATA[15]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="17">
+              <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="34">
+                <TEXT><![CDATA[32]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="18">
+              <FIGURE SUBTYPE="PapEnd" FORMAT="1.00" ID="2">
+                <TEXT><![CDATA[Ende]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+          </ENTRIES>
+        </LAYOUT>
+        <CONNECTIONS>
+          <CONNECTION FORMAT="1.00" ID="3" FROM="1" TO="4" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="5" FROM="4" TO="6" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="7" FROM="6" TO="8" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="9" FROM="8" TO="10" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="11" FROM="10" TO="12" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="13" FROM="12" TO="14" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="15" FROM="14" TO="16" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="17" FROM="16" TO="18" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="19" FROM="18" TO="20" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="21" FROM="20" TO="22" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="23" FROM="22" TO="24" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="25" FROM="24" TO="26" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="27" FROM="26" TO="28" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="29" FROM="28" TO="30" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="31" FROM="30" TO="32" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="33" FROM="32" TO="34" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="35" FROM="34" TO="2" TEXT="" />
+        </CONNECTIONS>
+      </DIAGRAM>
+    </DIAGRAMS>
+  </PROJECT>
+</FRAME>
