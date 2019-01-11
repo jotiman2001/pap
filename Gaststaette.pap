@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="7C7C92E7EDFC42C8">
-  <PROJECT FORMAT="1.00" NAME="Gestattung eines vorubergehenden Gaststaettenbetriebes" AUTHOR="jap19" CREATED="2019.01.08 22:18:34" MODIFIED="2019.01.09 16:17:11">
+<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="AE3B2B964CAA8602">
+  <PROJECT FORMAT="1.00" NAME="Gestattung eines vorubergehenden Gaststaettenbetriebes" AUTHOR="jap19" CREATED="2019.01.08 22:18:34" MODIFIED="2019.01.11 10:11:15">
     <DIAGRAMS>
-      <DIAGRAM FORMAT="1.00" ID="0" NAME="page 10" CREATED="2019.01.08 22:19:04" MODIFIED="2019.01.09 16:17:11">
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="page 10" CREATED="2019.01.08 22:19:04" MODIFIED="2019.01.11 10:11:15">
         <LAYOUT FORMAT="1.00" COLUMNS="2" ROWS="11">
           <ENTRIES>
             <ENTRY COLUMN="0" ROW="0" ANCHOR="True">
@@ -43,7 +43,8 @@ Durchlaufkühler : true/false]]></TEXT>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="6">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="16">
-                <TEXT><![CDATA[10 flies ?]]></TEXT>
+                <TEXT><![CDATA[10 
+flies ?]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="7">
