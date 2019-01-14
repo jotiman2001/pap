@@ -1,0 +1,21 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+Keys.ENTER
+driver = webdriver.Firefox()
+driver.implicitly_wait(3)
+driver.get("https://www.govos-test.de/govos-test/go/a/288")
+assert "Optionale Registrierung"   in driver.page_source
+
+elem = driver.find_element_by_id("h2id0")
+elem.click()
+elem = driver.find_element_by_class_name("jp-button")
+elem.send_keys(Keys.ENTER)
+
+elem = driver.find_element_by_xpath("//div[@class='antrag2-doc']//a[1]")
+elem.send_keys(Keys.ENTER)
+
+elem = driver.find_element_by_xpath("//*[@id='h2id0']")
+elem.click()
+
+elem = driver.find_element_by_xpath("//*[@id='h2id5']")
+elem.click()
