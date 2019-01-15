@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="1A86F5C872B10A39">
-  <PROJECT FORMAT="1.00" NAME="Erlaubnis nach der Spielgeräte-Verordnung Bayern" AUTHOR="jp" CREATED="2019.01.09 16:28:43" MODIFIED="2019.01.14 10:27:51">
+<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="842C6DC3A20E8CDE">
+  <PROJECT FORMAT="1.00" NAME="Erlaubnis nach der Spielgeräte-Verordnung Bayern" AUTHOR="jp" CREATED="2019.01.09 16:28:43" MODIFIED="2019.01.15 15:54:04">
     <DIAGRAMS>
-      <DIAGRAM FORMAT="1.00" ID="0" NAME="Hauptprogramm 1" CREATED="2019.01.09 16:28:48" MODIFIED="2019.01.14 10:27:51">
-        <LAYOUT FORMAT="1.00" COLUMNS="12" ROWS="43">
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="Hauptprogramm 1" CREATED="2019.01.09 16:28:48" MODIFIED="2019.01.15 15:54:04">
+        <LAYOUT FORMAT="1.00" COLUMNS="12" ROWS="49">
           <ENTRIES>
             <ENTRY COLUMN="0" ROW="0" ANCHOR="True">
               <FIGURE SUBTYPE="PapTitle" FORMAT="1.00" ID="0">
@@ -26,23 +26,30 @@ erlaubnistyp:1,2,3,4,5
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="3">
-              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="621">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="731">
                 <TEXT><![CDATA[1
-person vorher]]></TEXT>
+personalt != personneu
+radiobutton hat gewechselt]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="4">
-              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="36">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="732">
                 <TEXT><![CDATA[1
-person jetzt]]></TEXT>
+Datenfelder loeschen bis auf die gemappten]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="5">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="677">
-                <TEXT><![CDATA[]]></TEXT>
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="733">
+                <TEXT><![CDATA[1
+personneu]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="0" ROW="6">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="734">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="8">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="6">
                 <TEXT><![CDATA[2 -----------------------------------
 
@@ -55,32 +62,32 @@ bussgeld:true/false
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="7">
+            <ENTRY COLUMN="0" ROW="9">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="510">
                 <TEXT><![CDATA[2
 deutsch]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="8">
+            <ENTRY COLUMN="0" ROW="11">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="10">
                 <TEXT><![CDATA[10 ---------------------------------------
-staatsangeh >global var
+staatsangeh in global var schreiben
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="9">
+            <ENTRY COLUMN="0" ROW="12">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="522">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="13">
+            <ENTRY COLUMN="0" ROW="16">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="512">
                 <TEXT><![CDATA[2
 straf]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="14">
+            <ENTRY COLUMN="0" ROW="17">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="12">
                 <TEXT><![CDATA[11 -----------------------------
 
@@ -88,123 +95,141 @@ straf]]></TEXT>
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="15">
+            <ENTRY COLUMN="0" ROW="18">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="529">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="16">
+            <ENTRY COLUMN="0" ROW="19">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="514">
                 <TEXT><![CDATA[2
 gewerbe]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="17">
+            <ENTRY COLUMN="0" ROW="20">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="14">
                 <TEXT><![CDATA[12 -----------------------
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="18">
+            <ENTRY COLUMN="0" ROW="21">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="536">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="19">
+            <ENTRY COLUMN="0" ROW="22">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="516">
                 <TEXT><![CDATA[2
 bussgeld]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="20">
+            <ENTRY COLUMN="0" ROW="23">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="16">
                 <TEXT><![CDATA[13 ----------------------------
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="21">
+            <ENTRY COLUMN="0" ROW="24">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="543">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="22">
+            <ENTRY COLUMN="0" ROW="25">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="20">
-                <TEXT><![CDATA[8 ---------------------------------
+                <TEXT><![CDATA[8 ----------spiel-----------------------
+
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="23">
+            <ENTRY COLUMN="0" ROW="26">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="610">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="0" ROW="24">
+            <ENTRY COLUMN="0" ROW="27">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="693">
+                <TEXT><![CDATA[1
+erlaubnistyp 
+radiobutton hat gewechselt]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="28">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="763">
+                <TEXT><![CDATA[1--------------------------------------------
+
+Datenfelder loeschen 
+Seiten deaktivieren
+Anlagen deaktivieren
+3-7 , 15-32
+.]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="29">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="63">
                 <TEXT><![CDATA[1
 erlaubnistyp]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="4">
-              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="654">
-                <TEXT><![CDATA[1
-Datenfelder loeschen bis auf die gemappten]]></TEXT>
-              </FIGURE>
-            </ENTRY>
-            <ENTRY COLUMN="1" ROW="7">
+            <ENTRY COLUMN="1" ROW="9">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="518">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="9">
+            <ENTRY COLUMN="1" ROW="10">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="681">
+                <TEXT><![CDATA[2 ------------------------------
+"deutsch" in global var schreiben]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="12">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="520">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="13">
+            <ENTRY COLUMN="1" ROW="16">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="525">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="15">
+            <ENTRY COLUMN="1" ROW="18">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="526">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="16">
+            <ENTRY COLUMN="1" ROW="19">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="532">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="18">
+            <ENTRY COLUMN="1" ROW="21">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="533">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="19">
+            <ENTRY COLUMN="1" ROW="22">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="539">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="1" ROW="21">
+            <ENTRY COLUMN="1" ROW="24">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="540">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="3">
-              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="627">
-                <TEXT><![CDATA[1
-person jetzt]]></TEXT>
-              </FIGURE>
-            </ENTRY>
-            <ENTRY COLUMN="2" ROW="4">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="675">
+            <ENTRY COLUMN="2" ROW="5">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="735">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="6">
+            <ENTRY COLUMN="2" ROW="7">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="756">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="8">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="8">
                 <TEXT><![CDATA[14 -----------------------------
 Datenfelder wie 2 +jur_Person
@@ -219,50 +244,50 @@ bussgeld: true/false
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="7">
+            <ENTRY COLUMN="2" ROW="9">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="546">
                 <TEXT><![CDATA[14
 deutsch]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="8">
+            <ENTRY COLUMN="2" ROW="11">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="547">
                 <TEXT><![CDATA[10 ---------------------------------------
-staatsangeh >global var
+staatsangeh in global var schreiben
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="9">
+            <ENTRY COLUMN="2" ROW="12">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="548">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="10">
+            <ENTRY COLUMN="2" ROW="13">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="598">
                 <TEXT><![CDATA[14
 handel]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="11">
+            <ENTRY COLUMN="2" ROW="14">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="558">
                 <TEXT><![CDATA[33 --------------------------------
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="12">
+            <ENTRY COLUMN="2" ROW="15">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="605">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="13">
+            <ENTRY COLUMN="2" ROW="16">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="549">
                 <TEXT><![CDATA[14
 straf]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="14">
+            <ENTRY COLUMN="2" ROW="17">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="550">
                 <TEXT><![CDATA[11 -----------------------------
 
@@ -270,65 +295,66 @@ straf]]></TEXT>
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="15">
+            <ENTRY COLUMN="2" ROW="18">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="551">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="16">
+            <ENTRY COLUMN="2" ROW="19">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="552">
                 <TEXT><![CDATA[14
 gewerbe]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="17">
+            <ENTRY COLUMN="2" ROW="20">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="553">
                 <TEXT><![CDATA[12 -----------------------
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="18">
+            <ENTRY COLUMN="2" ROW="21">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="554">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="19">
+            <ENTRY COLUMN="2" ROW="22">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="555">
                 <TEXT><![CDATA[14
 bussgeld]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="20">
+            <ENTRY COLUMN="2" ROW="23">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="556">
                 <TEXT><![CDATA[13 ----------------------------
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="21">
+            <ENTRY COLUMN="2" ROW="24">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="557">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="22">
+            <ENTRY COLUMN="2" ROW="25">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="559">
-                <TEXT><![CDATA[8 ---------------------------------
+                <TEXT><![CDATA[8 -----------spiel----------------------
+
 
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="23">
+            <ENTRY COLUMN="2" ROW="26">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="608">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="24">
+            <ENTRY COLUMN="2" ROW="29">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="129">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="25">
+            <ENTRY COLUMN="2" ROW="30">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="22">
                 <TEXT><![CDATA[3 ---------------A---------------------
 fuehrungszeugnis:true/false
@@ -340,213 +366,239 @@ steuer:true/false
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="26">
+            <ENTRY COLUMN="2" ROW="31">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="279">
                 <TEXT><![CDATA[3
 fuehrungszeugnis]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="27">
+            <ENTRY COLUMN="2" ROW="33">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="32">
                 <TEXT><![CDATA[15]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="28">
+            <ENTRY COLUMN="2" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="397">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="29">
+            <ENTRY COLUMN="2" ROW="35">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="293">
                 <TEXT><![CDATA[3
 gewerbe]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="30">
+            <ENTRY COLUMN="2" ROW="36">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="226">
                 <TEXT><![CDATA[16]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="31">
+            <ENTRY COLUMN="2" ROW="37">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="401">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="32">
+            <ENTRY COLUMN="2" ROW="38">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="295">
                 <TEXT><![CDATA[3
 handel]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="33">
+            <ENTRY COLUMN="2" ROW="39">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="228">
                 <TEXT><![CDATA[17]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="34">
+            <ENTRY COLUMN="2" ROW="40">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="404">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="35">
+            <ENTRY COLUMN="2" ROW="41">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="297">
                 <TEXT><![CDATA[3
 schuldner]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="36">
+            <ENTRY COLUMN="2" ROW="42">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="230">
                 <TEXT><![CDATA[18]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="37">
+            <ENTRY COLUMN="2" ROW="43">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="409">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="38">
+            <ENTRY COLUMN="2" ROW="44">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="299">
                 <TEXT><![CDATA[3
 steuer]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="39">
+            <ENTRY COLUMN="2" ROW="45">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="232">
                 <TEXT><![CDATA[19]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="40">
+            <ENTRY COLUMN="2" ROW="46">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="413">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="41">
+            <ENTRY COLUMN="2" ROW="47">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="263">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="2" ROW="42">
+            <ENTRY COLUMN="2" ROW="48">
               <FIGURE SUBTYPE="PapEnd" FORMAT="1.00" ID="2">
                 <TEXT><![CDATA[Ende]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="3">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="652">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="737">
                 <TEXT><![CDATA[]]></TEXT>
-              </FIGURE>
-            </ENTRY>
-            <ENTRY COLUMN="3" ROW="4">
-              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="661">
-                <TEXT><![CDATA[1
-Datenfelder loeschen bis auf die gemappten]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="5">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="669">
-                <TEXT><![CDATA[]]></TEXT>
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="738">
+                <TEXT><![CDATA[1
+personneu]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="7">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="560">
+            <ENTRY COLUMN="3" ROW="6">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="739">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="9">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="561">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="560">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="10">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="601">
-                <TEXT><![CDATA[]]></TEXT>
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="687">
+                <TEXT><![CDATA[14 -----------------------------
+"deutsch" in global var schreiben]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="12">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="602">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="561">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="13">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="562">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="601">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="15">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="563">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="602">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="16">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="564">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="562">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="18">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="565">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="563">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="19">
-              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="566">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="564">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
             <ENTRY COLUMN="3" ROW="21">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="565">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="22">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="566">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="24">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="567">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="26">
+            <ENTRY COLUMN="3" ROW="31">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="286">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="28">
+            <ENTRY COLUMN="3" ROW="32">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="683">
+                <TEXT><![CDATA[anlage aktivieren]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="288">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="29">
+            <ENTRY COLUMN="3" ROW="35">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="319">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="31">
+            <ENTRY COLUMN="3" ROW="36">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="685">
+                <TEXT><![CDATA[anlage aktivieren]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="3" ROW="37">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="321">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="32">
+            <ENTRY COLUMN="3" ROW="38">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="325">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="34">
+            <ENTRY COLUMN="3" ROW="40">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="322">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="35">
+            <ENTRY COLUMN="3" ROW="41">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="308">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="37">
+            <ENTRY COLUMN="3" ROW="43">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="312">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="38">
+            <ENTRY COLUMN="3" ROW="44">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="301">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="3" ROW="40">
+            <ENTRY COLUMN="3" ROW="46">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="303">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="6">
+            <ENTRY COLUMN="4" ROW="5">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="740">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="4" ROW="7">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="758">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="4" ROW="8">
               <FIGURE SUBTYPE="PapComment" FORMAT="1.00" ID="509">
                 <TEXT><![CDATA[Datenfelder auf Seite 2 identisch mit Datenfelder auf Seite 14 bis auf
  jur_Person
@@ -557,17 +609,17 @@ xf.dataRemove
 gemappte datenfelder nicht removen]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="8">
+            <ENTRY COLUMN="4" ROW="11">
               <FIGURE SUBTYPE="PapComment" FORMAT="1.00" ID="613">
                 <TEXT><![CDATA[staatsangehoerigkeit als globale variable fuer ciralli formular]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="24">
+            <ENTRY COLUMN="4" ROW="29">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="154">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="25">
+            <ENTRY COLUMN="4" ROW="30">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="24">
                 <TEXT><![CDATA[4 -------------B------------------
 
@@ -576,43 +628,43 @@ Allgemeine Aufstellerlaubnis:true/false
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="26">
+            <ENTRY COLUMN="4" ROW="31">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="329">
                 <TEXT><![CDATA[4
  Allgemeine Aufstellerlaubnis]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="27">
+            <ENTRY COLUMN="4" ROW="33">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="234">
                 <TEXT><![CDATA[20]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="28">
+            <ENTRY COLUMN="4" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="331">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="4" ROW="41">
+            <ENTRY COLUMN="4" ROW="47">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="261">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="5" ROW="26">
+            <ENTRY COLUMN="5" ROW="31">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="333">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="5" ROW="28">
+            <ENTRY COLUMN="5" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="334">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="24">
+            <ENTRY COLUMN="6" ROW="29">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="212">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="25">
+            <ENTRY COLUMN="6" ROW="30">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="26">
                 <TEXT><![CDATA[5 -----------------C-------------------
 fuehrungszeugnis:true/false
@@ -626,147 +678,147 @@ steuer:true/false
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="26">
+            <ENTRY COLUMN="6" ROW="31">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="339">
                 <TEXT><![CDATA[5
 fuehrungszeugnis]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="27">
+            <ENTRY COLUMN="6" ROW="33">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="340">
                 <TEXT><![CDATA[21]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="28">
+            <ENTRY COLUMN="6" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="341">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="29">
+            <ENTRY COLUMN="6" ROW="35">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="342">
                 <TEXT><![CDATA[5
 gewerbe]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="30">
+            <ENTRY COLUMN="6" ROW="36">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="343">
                 <TEXT><![CDATA[22]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="31">
+            <ENTRY COLUMN="6" ROW="37">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="344">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="32">
+            <ENTRY COLUMN="6" ROW="38">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="345">
                 <TEXT><![CDATA[5
 handel]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="33">
+            <ENTRY COLUMN="6" ROW="39">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="346">
                 <TEXT><![CDATA[23]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="34">
+            <ENTRY COLUMN="6" ROW="40">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="347">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="35">
+            <ENTRY COLUMN="6" ROW="41">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="348">
                 <TEXT><![CDATA[5
 schuldner]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="36">
+            <ENTRY COLUMN="6" ROW="42">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="349">
                 <TEXT><![CDATA[24]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="37">
+            <ENTRY COLUMN="6" ROW="43">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="350">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="38">
+            <ENTRY COLUMN="6" ROW="44">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="351">
                 <TEXT><![CDATA[5
 steuer]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="39">
+            <ENTRY COLUMN="6" ROW="45">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="352">
                 <TEXT><![CDATA[25]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="40">
+            <ENTRY COLUMN="6" ROW="46">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="353">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="6" ROW="41">
+            <ENTRY COLUMN="6" ROW="47">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="393">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="26">
+            <ENTRY COLUMN="7" ROW="31">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="354">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="28">
+            <ENTRY COLUMN="7" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="355">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="29">
+            <ENTRY COLUMN="7" ROW="35">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="356">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="31">
+            <ENTRY COLUMN="7" ROW="37">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="357">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="32">
+            <ENTRY COLUMN="7" ROW="38">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="358">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="34">
+            <ENTRY COLUMN="7" ROW="40">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="359">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="35">
+            <ENTRY COLUMN="7" ROW="41">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="360">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="37">
+            <ENTRY COLUMN="7" ROW="43">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="361">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="38">
+            <ENTRY COLUMN="7" ROW="44">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="362">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="7" ROW="40">
+            <ENTRY COLUMN="7" ROW="46">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="363">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="24">
+            <ENTRY COLUMN="8" ROW="29">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="215">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="25">
+            <ENTRY COLUMN="8" ROW="30">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="28">
                 <TEXT><![CDATA[6 ----------D-------------------------
 fuehrungszeugnis:true/false
@@ -779,147 +831,147 @@ steuer:true/false
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="26">
+            <ENTRY COLUMN="8" ROW="31">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="433">
                 <TEXT><![CDATA[6
 fuehrungszeugnis]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="27">
+            <ENTRY COLUMN="8" ROW="33">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="434">
                 <TEXT><![CDATA[26]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="28">
+            <ENTRY COLUMN="8" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="435">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="29">
+            <ENTRY COLUMN="8" ROW="35">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="436">
                 <TEXT><![CDATA[6
 gewerbe]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="30">
+            <ENTRY COLUMN="8" ROW="36">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="437">
                 <TEXT><![CDATA[27]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="31">
+            <ENTRY COLUMN="8" ROW="37">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="438">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="32">
+            <ENTRY COLUMN="8" ROW="38">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="439">
                 <TEXT><![CDATA[6
 handel]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="33">
+            <ENTRY COLUMN="8" ROW="39">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="440">
                 <TEXT><![CDATA[28]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="34">
+            <ENTRY COLUMN="8" ROW="40">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="441">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="35">
+            <ENTRY COLUMN="8" ROW="41">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="442">
                 <TEXT><![CDATA[6
 schuldner]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="36">
+            <ENTRY COLUMN="8" ROW="42">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="443">
                 <TEXT><![CDATA[29]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="37">
+            <ENTRY COLUMN="8" ROW="43">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="444">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="38">
+            <ENTRY COLUMN="8" ROW="44">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="445">
                 <TEXT><![CDATA[6
 steuer]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="39">
+            <ENTRY COLUMN="8" ROW="45">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="446">
                 <TEXT><![CDATA[30]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="40">
+            <ENTRY COLUMN="8" ROW="46">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="447">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="8" ROW="41">
+            <ENTRY COLUMN="8" ROW="47">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="488">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="26">
+            <ENTRY COLUMN="9" ROW="31">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="448">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="28">
+            <ENTRY COLUMN="9" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="449">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="29">
+            <ENTRY COLUMN="9" ROW="35">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="450">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="31">
+            <ENTRY COLUMN="9" ROW="37">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="451">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="32">
+            <ENTRY COLUMN="9" ROW="38">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="452">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="34">
+            <ENTRY COLUMN="9" ROW="40">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="453">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="35">
+            <ENTRY COLUMN="9" ROW="41">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="454">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="37">
+            <ENTRY COLUMN="9" ROW="43">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="455">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="38">
+            <ENTRY COLUMN="9" ROW="44">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="456">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="9" ROW="40">
+            <ENTRY COLUMN="9" ROW="46">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="457">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="24">
+            <ENTRY COLUMN="10" ROW="29">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="416">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="25">
+            <ENTRY COLUMN="10" ROW="30">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="30">
                 <TEXT><![CDATA[7 --------------------E----------------
 fuehrungszeugnis:true/false
@@ -929,64 +981,64 @@ gewerbe:true/false
 .]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="26">
+            <ENTRY COLUMN="10" ROW="31">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="491">
                 <TEXT><![CDATA[7
 fuehrungszeugnis]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="27">
+            <ENTRY COLUMN="10" ROW="33">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="253">
                 <TEXT><![CDATA[31]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="28">
+            <ENTRY COLUMN="10" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="501">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="29">
+            <ENTRY COLUMN="10" ROW="35">
               <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="493">
                 <TEXT><![CDATA[7
 gewerbe]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="30">
+            <ENTRY COLUMN="10" ROW="36">
               <FIGURE SUBTYPE="PapInput" FORMAT="1.00" ID="254">
                 <TEXT><![CDATA[32]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="31">
+            <ENTRY COLUMN="10" ROW="37">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="505">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="10" ROW="41">
+            <ENTRY COLUMN="10" ROW="47">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="430">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="11" ROW="24">
+            <ENTRY COLUMN="11" ROW="29">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="421">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="11" ROW="26">
+            <ENTRY COLUMN="11" ROW="31">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="495">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="11" ROW="28">
+            <ENTRY COLUMN="11" ROW="34">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="497">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="11" ROW="29">
+            <ENTRY COLUMN="11" ROW="35">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="498">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
             </ENTRY>
-            <ENTRY COLUMN="11" ROW="31">
+            <ENTRY COLUMN="11" ROW="37">
               <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="499">
                 <TEXT><![CDATA[]]></TEXT>
               </FIGURE>
@@ -995,9 +1047,8 @@ gewerbe]]></TEXT>
         </LAYOUT>
         <CONNECTIONS>
           <CONNECTION FORMAT="1.00" ID="3" FROM="1" TO="4" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="622" FROM="621" TO="36" TEXT="nat" />
-          <CONNECTION FORMAT="1.00" ID="651" FROM="627" TO="675" TEXT="jur" />
-          <CONNECTION FORMAT="1.00" ID="59" FROM="510" TO="10" TEXT="true" />
+          <CONNECTION FORMAT="1.00" ID="752" FROM="739" TO="734" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="59" FROM="510" TO="10" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="458" FROM="433" TO="434" TEXT="true" />
           <CONNECTION FORMAT="1.00" ID="530" FROM="529" TO="514" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="537" FROM="536" TO="516" TEXT="" />
@@ -1008,11 +1059,11 @@ gewerbe]]></TEXT>
           <CONNECTION FORMAT="1.00" ID="213" FROM="154" TO="212" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="33" FROM="32" TO="397" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="264" FROM="263" TO="2" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="678" FROM="677" TO="6" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="37" FROM="36" TO="677" TEXT="nat" />
-          <CONNECTION FORMAT="1.00" ID="513" FROM="512" TO="12" TEXT="true" />
+          <CONNECTION FORMAT="1.00" ID="5" FROM="4" TO="731" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="747" FROM="733" TO="734" TEXT="natuerlich" />
+          <CONNECTION FORMAT="1.00" ID="513" FROM="512" TO="12" TEXT="ja" />
           <CONNECTION FORMAT="1.00" ID="7" FROM="6" TO="510" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="568" FROM="546" TO="547" TEXT="true" />
+          <CONNECTION FORMAT="1.00" ID="568" FROM="546" TO="547" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="523" FROM="522" TO="512" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="609" FROM="559" TO="608" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="130" FROM="63" TO="129" TEXT="" />
@@ -1035,12 +1086,12 @@ gewerbe]]></TEXT>
           <CONNECTION FORMAT="1.00" ID="265" FROM="261" TO="263" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="394" FROM="393" TO="261" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="423" FROM="30" TO="491" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="280" FROM="279" TO="32" TEXT="true" />
-          <CONNECTION FORMAT="1.00" ID="400" FROM="293" TO="319" TEXT="false" />
-          <CONNECTION FORMAT="1.00" ID="338" FROM="279" TO="286" TEXT="false" />
-          <CONNECTION FORMAT="1.00" ID="289" FROM="286" TO="288" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="280" FROM="279" TO="32" TEXT="beantragt worden" />
+          <CONNECTION FORMAT="1.00" ID="400" FROM="293" TO="319" TEXT="beigefügt" />
+          <CONNECTION FORMAT="1.00" ID="338" FROM="279" TO="286" TEXT="beigefügt" />
+          <CONNECTION FORMAT="1.00" ID="289" FROM="286" TO="683" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="399" FROM="288" TO="397" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="294" FROM="293" TO="226" TEXT="true" />
+          <CONNECTION FORMAT="1.00" ID="294" FROM="293" TO="226" TEXT="beantragt worden" />
           <CONNECTION FORMAT="1.00" ID="296" FROM="295" TO="228" TEXT="true" />
           <CONNECTION FORMAT="1.00" ID="298" FROM="297" TO="230" TEXT="true" />
           <CONNECTION FORMAT="1.00" ID="300" FROM="299" TO="232" TEXT="true" />
@@ -1054,8 +1105,8 @@ gewerbe]]></TEXT>
           <CONNECTION FORMAT="1.00" ID="402" FROM="401" TO="295" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="229" FROM="228" TO="404" TEXT="true" />
           <CONNECTION FORMAT="1.00" ID="398" FROM="397" TO="293" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="323" FROM="319" TO="321" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="227" FROM="226" TO="401" TEXT="true" />
+          <CONNECTION FORMAT="1.00" ID="323" FROM="319" TO="685" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="227" FROM="226" TO="401" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="408" FROM="297" TO="308" TEXT="false" />
           <CONNECTION FORMAT="1.00" ID="327" FROM="325" TO="322" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="406" FROM="322" TO="404" TEXT="" />
@@ -1138,65 +1189,74 @@ gewerbe]]></TEXT>
           <CONNECTION FORMAT="1.00" ID="506" FROM="505" TO="430" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="507" FROM="499" TO="505" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="508" FROM="493" TO="498" TEXT="false" />
-          <CONNECTION FORMAT="1.00" ID="515" FROM="514" TO="14" TEXT="true" />
-          <CONNECTION FORMAT="1.00" ID="517" FROM="516" TO="16" TEXT="true" />
-          <CONNECTION FORMAT="1.00" ID="519" FROM="510" TO="518" TEXT="false" />
-          <CONNECTION FORMAT="1.00" ID="521" FROM="518" TO="520" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="515" FROM="514" TO="14" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="517" FROM="516" TO="16" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="519" FROM="510" TO="518" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="521" FROM="518" TO="681" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="11" FROM="10" TO="522" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="524" FROM="520" TO="522" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="527" FROM="512" TO="525" TEXT="false" />
+          <CONNECTION FORMAT="1.00" ID="527" FROM="512" TO="525" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="528" FROM="525" TO="526" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="13" FROM="12" TO="529" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="531" FROM="526" TO="529" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="534" FROM="514" TO="532" TEXT="false" />
+          <CONNECTION FORMAT="1.00" ID="534" FROM="514" TO="532" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="535" FROM="532" TO="533" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="15" FROM="14" TO="536" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="538" FROM="533" TO="536" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="541" FROM="516" TO="539" TEXT="false" />
+          <CONNECTION FORMAT="1.00" ID="541" FROM="516" TO="539" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="542" FROM="539" TO="540" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="17" FROM="16" TO="543" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="545" FROM="540" TO="543" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="569" FROM="546" TO="560" TEXT="false" />
-          <CONNECTION FORMAT="1.00" ID="570" FROM="560" TO="561" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="569" FROM="546" TO="560" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="570" FROM="560" TO="687" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="571" FROM="547" TO="548" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="572" FROM="561" TO="548" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="573" FROM="548" TO="598" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="574" FROM="549" TO="550" TEXT="true" />
-          <CONNECTION FORMAT="1.00" ID="575" FROM="549" TO="562" TEXT="false" />
+          <CONNECTION FORMAT="1.00" ID="574" FROM="549" TO="550" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="575" FROM="549" TO="562" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="576" FROM="562" TO="563" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="577" FROM="550" TO="551" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="578" FROM="563" TO="551" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="579" FROM="551" TO="552" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="580" FROM="552" TO="553" TEXT="true" />
-          <CONNECTION FORMAT="1.00" ID="581" FROM="552" TO="564" TEXT="false" />
+          <CONNECTION FORMAT="1.00" ID="580" FROM="552" TO="553" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="581" FROM="552" TO="564" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="582" FROM="564" TO="565" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="583" FROM="553" TO="554" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="584" FROM="565" TO="554" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="585" FROM="554" TO="555" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="586" FROM="555" TO="556" TEXT="true" />
-          <CONNECTION FORMAT="1.00" ID="587" FROM="555" TO="566" TEXT="false" />
+          <CONNECTION FORMAT="1.00" ID="586" FROM="555" TO="556" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="587" FROM="555" TO="566" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="588" FROM="566" TO="567" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="589" FROM="556" TO="557" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="590" FROM="567" TO="557" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="599" FROM="598" TO="558" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="599" FROM="598" TO="558" TEXT="ja" />
           <CONNECTION FORMAT="1.00" ID="591" FROM="557" TO="559" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="593" FROM="8" TO="546" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="611" FROM="610" TO="63" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="606" FROM="605" TO="549" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="603" FROM="598" TO="601" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="603" FROM="598" TO="601" TEXT="nein" />
           <CONNECTION FORMAT="1.00" ID="604" FROM="601" TO="602" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="600" FROM="558" TO="605" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="607" FROM="602" TO="605" TEXT="" />
           <CONNECTION FORMAT="1.00" ID="612" FROM="608" TO="610" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="5" FROM="4" TO="621" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="655" FROM="36" TO="654" TEXT="jur" />
-          <CONNECTION FORMAT="1.00" ID="633" FROM="621" TO="627" TEXT="jur" />
-          <CONNECTION FORMAT="1.00" ID="653" FROM="627" TO="652" TEXT="nat" />
-          <CONNECTION FORMAT="1.00" ID="680" FROM="675" TO="8" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="662" FROM="652" TO="661" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="674" FROM="654" TO="675" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="673" FROM="669" TO="677" TEXT="" />
-          <CONNECTION FORMAT="1.00" ID="664" FROM="661" TO="669" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="751" FROM="740" TO="758" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="742" FROM="731" TO="732" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="760" FROM="758" TO="756" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="750" FROM="738" TO="740" TEXT="jur" />
+          <CONNECTION FORMAT="1.00" ID="745" FROM="732" TO="733" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="749" FROM="738" TO="739" TEXT="natuerlich" />
+          <CONNECTION FORMAT="1.00" ID="746" FROM="733" TO="735" TEXT="jur" />
+          <CONNECTION FORMAT="1.00" ID="743" FROM="731" TO="737" TEXT="nein" />
+          <CONNECTION FORMAT="1.00" ID="744" FROM="737" TO="738" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="682" FROM="681" TO="520" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="684" FROM="683" TO="288" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="686" FROM="685" TO="321" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="688" FROM="687" TO="561" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="611" FROM="610" TO="693" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="694" FROM="693" TO="763" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="764" FROM="763" TO="63" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="754" FROM="734" TO="6" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="748" FROM="735" TO="756" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="757" FROM="756" TO="8" TEXT="" />
         </CONNECTIONS>
       </DIAGRAM>
     </DIAGRAMS>
