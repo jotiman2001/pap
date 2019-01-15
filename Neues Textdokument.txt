@@ -1,21 +1,32 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-Keys.ENTER
+import time
+
 driver = webdriver.Firefox()
 driver.implicitly_wait(3)
 driver.get("https://www.govos-test.de/govos-test/go/a/288")
 assert "Optionale Registrierung"   in driver.page_source
 
-elem = driver.find_element_by_id("h2id0")
+elem = driver.find_element_by_id("h2id0") # no register
 elem.click()
-elem = driver.find_element_by_class_name("jp-button")
+time.sleep(0.2)
+
+elem = driver.find_element_by_class_name("jp-button") # weiter button
 elem.send_keys(Keys.ENTER)
+time.sleep(0.2)
 
-elem = driver.find_element_by_xpath("//div[@class='antrag2-doc']//a[1]")
+elem = driver.find_element_by_xpath("//a[@class='icon jp-button']") # assi starten
 elem.send_keys(Keys.ENTER)
+time.sleep(0.2)
 
-elem = driver.find_element_by_xpath("//*[@id='h2id0']")
+elem = driver.find_element_by_xpath("//*[@id='h2id0']") # radio antragtyp
 elem.click()
+time.sleep(0.2)
 
-elem = driver.find_element_by_xpath("//*[@id='h2id5']")
+elem = driver.find_element_by_xpath("//*[@id='h2id5']") # radio natürl pers
 elem.click()
+time.sleep(0.2)
+
+elem = driver.find_element_by_xpath("//input[@value='weiter >']") # weiter button
+elem.click()
+time.sleep(0.2)
