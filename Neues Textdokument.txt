@@ -30,3 +30,12 @@ time.sleep(0.2)
 elem = driver.find_element_by_xpath("//input[@value='weiter >']") # weiter button
 elem.click()
 time.sleep(0.2)
+
+elem = driver.find_element_by_xpath("//input[@value='< zurück']") # zurück button
+elem.click()
+time.sleep(0.2)
+
+
+
+time.sleep(2)
+driver.close()
