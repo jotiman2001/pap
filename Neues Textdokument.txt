@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 driver = webdriver.Firefox()
-driver.implicitly_wait(3)
+
 driver.get("https://www.govos-test.de/govos-test/go/a/288")
 assert "Optionale Registrierung"   in driver.page_source
 
@@ -12,14 +12,14 @@ elem.click()
 time.sleep(0.2)
 
 elem = driver.find_element_by_class_name("jp-button") # weiter button
-elem.send_keys(Keys.ENTER)
+elem.click()
 time.sleep(0.2)
 
 elem = driver.find_element_by_xpath("//a[@class='icon jp-button']") # assi starten
-elem.send_keys(Keys.ENTER)
+elem.click()
 time.sleep(0.2)
 
-elem = driver.find_element_by_xpath("//*[@id='h2id0']") # radio antragtyp
+elem = driver.find_element_by_xpath('//*[@id="h2id0"]') # radio antragtyp
 elem.click()
 time.sleep(0.2)
 
@@ -38,4 +38,4 @@ time.sleep(0.2)
 
 
 time.sleep(2)
-driver.close()
+# driver.close()
