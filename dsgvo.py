@@ -1,24 +1,29 @@
 from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
+import re
 
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_vv_ueberblick="https://www.govos-test.de/govos-test/portal/zs/875/vverfassung?vvid=164_0_0&vvesf=overview" # Uebersicht Verarbeitungsverzeichnis im Verfahren
 url_seiten_ueberblick="https://www.govos-test.de/govos-test/portal/zs/875/vverfassung?vvid=164_5_1" # Seitenueberblick xformular
 #  "https://www.govos-test.de/govos-test/portal/zs/875/vverfassung/164_5_1?p=1"    seite
-url_seite_base="https://www.govos-test.de/govos-test/portal/zs/875/vverfassung/164_5_1?p="
+url_seite_base="https://www.govos-test.de/govos-test/portal/zs/875/vverfassung/164_"
 delay=0.2
 version_nr=""
 data_nr=""
 user="jp@fjd.de"
 pages=0
+first_page=""
 
 def Klick(_xpath,show_info):
-    elem = driver.find_element_by_xpath(_xpath)
-    elem.click()
-    time.sleep(delay)
-    if(show_info):
-        print(driver.current_url, driver.title)
+    try:
+        elem = driver.find_element_by_xpath(_xpath)
+        elem.click()
+        time.sleep(delay)
+        if(show_info):
+            print(driver.current_url, driver.title)
+    except:
+        pass
 
 def send_user(_xpath,show_info,text):
     elem = driver.find_element_by_xpath(_xpath)
@@ -37,18 +42,25 @@ def find_version():
 
     elem_vv = driver.find_element_by_xpath(vv)
     version_nr = elem_vv.get_attribute('innerHTML')
-    print(version_nr)
+    print("vorlagen-version : "+version_nr)
 
     elem_dv = driver.find_element_by_xpath(dv)
     data_nr = elem_dv.get_attribute('innerHTML')
-    print(data_nr)
+    print("daten-version : "+data_nr)
 
 def count_pages():
     global pages
+    global first_page
     table_body = driver.find_element_by_xpath("//table[@class='realtable jp-realtable']//tbody")
     rows = table_body.find_elements_by_tag_name("tr")
+    anker = rows[0].find_element_by_tag_name("a")
+    link = anker.get_attribute('href')
+    reg = re.search('\?p=\d+', link)
+    rechts = (reg.group(0))
+    reg1=re.search('\d+', rechts)
+    first_page = (reg1.group(0))
     pages = len(rows)
-    print(len(rows))
+
 
 driver = webdriver.Firefox()
 driver.get(login)
@@ -58,6 +70,8 @@ driver.execute_script("window.open('');")# Open a new window This does not chang
 driver.switch_to.window(driver.window_handles[1])# Switch to the new window
 find_version() # find active version and data number
 driver.get(url_seiten_ueberblick)
+count_pages()
+driver.get(url_seite_base+version_nr+"_"+data_nr+"?p="+first_page)
 while(pages):
     Klick("//input[@value='weiter >']", True)  # weiter button
     pages-=1
@@ -71,14 +85,7 @@ while(pages):
 # driver.get("https://www.govos-test.de/govos-test/portal/zs/875/vverfassung/164_1_5?p=3")
 # Klick("//input[@value='weiter >']",True) # weiter button
 # Klick("//input[@value='weiter >']",True) # weiter button
-# Klick("//input[@value='weiter >']",True) # weiter button
-# Klick("//input[@value='weiter >']",True) # weiter button
-# Klick("//input[@value='weiter >']",True) # weiter button
-# Klick("//input[@value='weiter >']",True) # weiter button
-# Klick("//input[@value='weiter >']",True) # weiter button
-# Klick("//input[@value='weiter >']",True) # weiter button
-# Klick("//input[@value='weiter >']",True) # weiter button
-# Klick("//input[@value='weiter >']",True) # weiter button
+
 
 
 
