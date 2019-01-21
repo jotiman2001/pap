@@ -2,6 +2,8 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 import re
+import datetime
+
 
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_vv_ueberblick="https://www.govos-test.de/govos-test/portal/zs/875/vverfassung?vvid=164_0_0&vvesf=overview" # Uebersicht Verarbeitungsverzeichnis im Verfahren
@@ -61,6 +63,40 @@ def count_pages():
     first_page = (reg1.group(0))
     pages = len(rows)
 
+def fillpage():
+    all_xf2_field_inputs =  driver.find_elements_by_class_name("xf2-field-input")
+    for div in all_xf2_field_inputs:
+        textarea = 0
+        all_inputs = 0
+
+        try:
+            all_inputs = div.find_elements_by_tag_name('input')
+        except:
+            pass
+
+        try:
+            textarea = div.find_element_by_tag_name('textarea')
+        except:
+            pass
+
+        if(len(all_inputs)>1):
+            for input in all_inputs:
+                pass        # radio
+        elif(all_inputs[0].get_attribute('type') != 'date'):
+            all_inputs[0].clear()
+            all_inputs[0].send_keys("11111")     # the rest text texaerea checkbox date
+        else:
+            all_inputs[0].clear()
+            x = datetime.datetime(2020, 5, 17)
+
+            all_inputs[0].send_keys(x)
+        if(textarea):
+            textarea.clear()
+            textarea.send_keys("www")
+
+
+
+
 
 driver = webdriver.Firefox()
 driver.get(login)
@@ -73,6 +109,7 @@ driver.get(url_seiten_ueberblick)
 count_pages()
 driver.get(url_seite_base+version_nr+"_"+data_nr+"?p="+first_page)
 while(pages):
+    fillpage()
     Klick("//input[@value='weiter >']", True)  # weiter button
     pages-=1
 
