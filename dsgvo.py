@@ -64,8 +64,8 @@ def count_pages():
     pages = len(rows)
 
 def fillpage():
-    all_xf2_field_inputs =  driver.find_elements_by_class_name("xf2-field-input")
-    for div in all_xf2_field_inputs:
+    all_div_inputs =  driver.find_elements_by_class_name("xf2-field-input")
+    for div in all_div_inputs:
         textarea = 0
         all_inputs = 0
 
@@ -79,20 +79,26 @@ def fillpage():
         except:
             pass
 
-        if(len(all_inputs)>1):
-            for input in all_inputs:
-                pass        # radio
-        elif(all_inputs[0].get_attribute('type') != 'date'):
-            all_inputs[0].clear()
-            all_inputs[0].send_keys("11111")     # the rest text texaerea checkbox date
-        else:
-            all_inputs[0].clear()
-            x = datetime.datetime(2020, 5, 17)
 
-            all_inputs[0].send_keys(x)
+        if(len(all_inputs) != 0):  # <input> vorhanden
+
+            if(len(all_inputs)>1):     #  mehr als 1 <input>  radio
+                for input in all_inputs:
+                    input.click()
+            elif(all_inputs[0].get_attribute('type') == 'text'):  # 1 <input>    text
+                all_inputs[0].clear()
+                all_inputs[0].send_keys("eeeeeeeeeeeeeee")
+            elif(all_inputs[0].get_attribute('type') == 'date'):   #  1 <input>  date
+                all_inputs[0].clear()
+                driver.execute_script('arguments[0].value="2017-06-01"',all_inputs[0])
+            elif (all_inputs[0].get_attribute('type') == 'checkbox'):  # 1 <input>  checkbox
+                all_inputs[0].click()
+            else:
+                pass
+
         if(textarea):
             textarea.clear()
-            textarea.send_keys("www")
+            textarea.send_keys("aaaaaaaaaaaaaaaaaaaaaaa")
 
 
 
