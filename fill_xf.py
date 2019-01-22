@@ -2,16 +2,47 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 import re
-
+import xml.etree.ElementTree as ET
+from tkinter.filedialog import askopenfilename
 
 
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
+url1="https://www.govos-test.de/govos-test/go/a/301"
 delay=0.2
-user="jp@fjd.de"
+user=""
 pages=0
 first_page=""
+
+
+
+def OpenFile():
+    filename = askopenfilename(initialdir="C:/Users/jp/Downloads/",
+                           filetypes =(("XML Glump, vareckts", "*.xml"),("Des Glump brauch i ned","*.*")),
+                           title = "Choose a file."
+                           )
+    print (filename)
+    #Using try in case user types in unknown file or closes without choosing a file.
+    try:
+        return(filename)
+        # sys.stdout.flush()
+    except:
+        print("No file exists")
+
+
+def dump_element():
+    print('dump  !')
+    element_id = input('ID ?')
+    xmlns = "{http://www.govos.de/xsd/xformular2}"
+    model = root.findall('%smodel' % (xmlns))  # Rückgabe ->Liste
+
+    for g in model[0].iter():
+        id = g.get('id')
+        if (id == element_id):  # string vergleichen
+            ET.dump(g)
+
+
 
 def Klick(_xpath,show_info):
     try:
@@ -22,6 +53,14 @@ def Klick(_xpath,show_info):
             print(driver.current_url, driver.title)
     except:
         pass
+
+def weiter():
+    try:
+        elem = driver.find_element_by_xpath("//input[@value='weiter >']") # weiter button existiert
+        if(elem):
+            return True
+    except:
+        return False
 
 def send_user(_xpath,show_info,text):
     elem = driver.find_element_by_xpath(_xpath)
@@ -47,18 +86,18 @@ def count_pages():
     pages = len(rows)
 
 def fillpage():
-    all_div_inputs =  driver.find_elements_by_class_name("xf2-field-input")
+    all_div_inputs =  driver.find_elements_by_class_name("xf2-field-input") # alle Eingabefelder der Seite
     for div in all_div_inputs:
         textarea = 0
         all_inputs = 0
 
         try:
-            all_inputs = div.find_elements_by_tag_name('input')
+            all_inputs = div.find_elements_by_tag_name('input') # 1 <input>   oder  mehrere  <input>s wenn radiobuttons
         except:
             pass
 
         try:
-            textarea = div.find_element_by_tag_name('textarea')
+            textarea = div.find_element_by_tag_name('textarea') # 0 oder 1 <textarea>
         except:
             pass
 
@@ -82,27 +121,34 @@ def fillpage():
             else:
                 pass
 
-        if(textarea):
+        if(textarea):  # <textarea> vorhanden
             textarea.clear()
             textarea.send_keys("aaaaaaaaaaaaaaaaaaaaaaa")
 
 
 
 
-
+dateiname = OpenFile()
+tree = ET.parse(dateiname)
+root = tree.getroot()
 driver = webdriver.Firefox()
 driver.get(login)
 send_user("//input[@name='username']",True,user)
 time.sleep(10)
 driver.execute_script("window.open('');")# Open a new window This does not change focus to the new window for the driver.
 driver.switch_to.window(driver.window_handles[1])# Switch to the new window
-driver.get(url_overview)
-count_pages()
-driver.get(url_base+"?p="+first_page)
-while(pages):
+driver.get(url1)
+# count_pages()
+# driver.get(url_base+"?p="+first_page)
+Klick("//input[@value='Weiter >']", True)  # weiter button
+Klick("//a[@class='icon jp-button']", True)  # Assistent starten  button
+i=0
+while(weiter()):
     fillpage()
     Klick("//input[@value='weiter >']", True)  # weiter button
-    pages-=1
+    i+=1
+    if(i == 40):
+        break
 
 # close the active tab
 # driver.close()

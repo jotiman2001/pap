@@ -13,7 +13,7 @@ url_seite_base="https://www.govos-test.de/govos-test/portal/zs/875/vverfassung/1
 delay=0.2
 version_nr=""
 data_nr=""
-user="jp@fjd.de"
+user=""
 pages=0
 first_page=""
 
