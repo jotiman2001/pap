@@ -10,8 +10,9 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
 url1="https://www.govos-test.de/govos-test/go/a/301"
+# url1="https://www.govos-test.de/govos-test/go/a/288"
 delay=0.2
-user=""
+user="jp@fjd.de"
 pages=0
 first_page=""
 
@@ -31,17 +32,17 @@ def OpenFile():
         print("No file exists")
 
 
-def dump_element():
-    print('dump  !')
-    element_id = input('ID ?')
+def find_type(id):
+    element_id = id
     xmlns = "{http://www.govos.de/xsd/xformular2}"
     model = root.findall('%smodel' % (xmlns))  # Rückgabe ->Liste
 
     for g in model[0].iter():
         id = g.get('id')
         if (id == element_id):  # string vergleichen
-            ET.dump(g)
-
+            type = g.get('type')
+            subtype = g.get('subtype')
+            return(type,subtype)
 
 
 def Klick(_xpath,show_info):
@@ -85,14 +86,17 @@ def count_pages():
     first_page = (reg1.group(0))
     pages = len(rows)
 
+
+
+
 def fillpage():
     all_div_inputs =  driver.find_elements_by_class_name("xf2-field-input") # alle Eingabefelder der Seite
-    for div in all_div_inputs:
+    for div in all_div_inputs:  # ein eingabefeld
         textarea = 0
         all_inputs = 0
 
         try:
-            all_inputs = div.find_elements_by_tag_name('input') # 1 <input>   oder  mehrere  <input>s wenn radiobuttons
+            all_inputs = div.find_elements_by_tag_name('input') # ein <input>   oder  mehrere  <input>s wenn radiobuttons
         except:
             pass
 
@@ -107,19 +111,34 @@ def fillpage():
             if(len(all_inputs)>1):     #  mehr als 1 <input>  radio
                 for input in all_inputs:
                     input.click()
-            elif(all_inputs[0].get_attribute('type') == 'text'):  # 1 <input>    text email subtext
-                all_inputs[0].clear()
-                all_inputs[0].send_keys("11111")
-            elif (all_inputs[0].get_attribute('type') == 'number'):  # 1 <input>    number
-                all_inputs[0].clear()
-                all_inputs[0].send_keys(11)
-            elif(all_inputs[0].get_attribute('type') == 'date'):   #  1 <input>  date
-                all_inputs[0].clear()
-                driver.execute_script('arguments[0].value="2017-06-01"',all_inputs[0])
-            elif (all_inputs[0].get_attribute('type') == 'checkbox'):  # 1 <input>  checkbox
-                all_inputs[0].click()
+
+            # elif(all_inputs[0].get_attribute('type') == 'text'):  # 1 <input>    text email subtext
+            #     all_inputs[0].clear()
+            #     all_inputs[0].send_keys("11111")
+            # elif (all_inputs[0].get_attribute('type') == 'number'):  # 1 <input>    number
+            #     all_inputs[0].clear()
+            #     all_inputs[0].send_keys(11)
+            # elif(all_inputs[0].get_attribute('type') == 'date'):   #  1 <input>  date
+            #     all_inputs[0].clear()
+            #     driver.execute_script('arguments[0].value="2017-06-01"',all_inputs[0])
+            # elif (all_inputs[0].get_attribute('type') == 'checkbox'):  # 1 <input>  checkbox
+            #     all_inputs[0].click()
             else:
-                pass
+                name = all_inputs[0].get_attribute("name")
+                name = name.lstrip("f")
+                (type,subtype) = find_type(name)
+
+                    if(type == 'text'):
+                        pass
+                    elif(type == 'number'):
+                        pass
+                    elif(type == 'date'):
+                        pass
+                    elif(type == 'checkbox'):
+                        pass
+                    else:
+                        pass
+
 
         if(textarea):  # <textarea> vorhanden
             textarea.clear()
@@ -146,8 +165,9 @@ i=0
 while(weiter()):
     fillpage()
     Klick("//input[@value='weiter >']", True)  # weiter button
-    i+=1
-    if(i == 40):
+    i += 1
+    print(i)
+    if(i == 20):
         break
 
 # close the active tab
