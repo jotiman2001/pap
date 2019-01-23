@@ -1,0 +1,29 @@
+ subtype="email" type="string"
+ subtype="" type="string"
+ subtype="bic" type="string"
+ subtype="plz" type="string"
+subtype="iban" type="string"
+subtype="url" type="string"
+subtype="" type="string" maxlength >255     dann  <textarea>  in website 
+
+
+
+subtype="" type="integer"
+subtype="currency" type="integer"
+
+
+
+subtype="" type="file"
+
+
+
+subtype="" type="date"
+subtype="date" type="date"
+subtype="datetime" type="date"
+
+
+subtype="" type="bool"
+
+-------------------------------
+
+select="true"  --> Liste
