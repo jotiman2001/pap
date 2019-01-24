@@ -1,10 +1,10 @@
- subtype="email" type="string"
- subtype="" type="string"
- subtype="bic" type="string"
- subtype="plz" type="string"
-subtype="iban" type="string"
-subtype="url" type="string"
-subtype="" type="string" maxlength >255     dann  <textarea>  in website 
+subtype="email"  type="string"
+subtype=""       type="string"
+subtype="bic"    type="string"
+subtype="plz"    type="string"
+subtype="iban"   type="string"
+subtype="url"    type="string"
+subtype=""       type="string"      maxLength >255     dann  <textarea>  in website
 
 
 
