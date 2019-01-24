@@ -12,7 +12,7 @@ url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV
 url1="https://www.govos-test.de/govos-test/go/a/301"
 # url1="https://www.govos-test.de/govos-test/go/a/288"
 delay=0.2
-user="jp@fjd.de"
+user=""
 pages=0
 first_page=""
 
