@@ -10,8 +10,8 @@ subtype=""       type="string"   maxLength >255                                 
 
 
 
-subtype="" type="integer"
-subtype="currency" type="integer"
+subtype="" type="integer"                                                           <input>
+subtype="currency" type="integer"                                                   <input>
 subtype="" type="integer" select="true" minValue="1" maxValue="6"                  6 * <input type="radio" value='x' >   radiobutton
 subtype="" type="integer" select="true" minValue="1" maxValue="6"                  6 * <option  value='x' >              dropdown
 subtype="" type="integer" select="true" minValue="1" maxValue="6"                  6 * <option  value='x' >              dropdown auswahl
