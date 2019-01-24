@@ -1,16 +1,20 @@
+xformular                                                                        Website
+
 subtype="email"  type="string"
 subtype=""       type="string"
 subtype="bic"    type="string"
 subtype="plz"    type="string"
 subtype="iban"   type="string"
 subtype="url"    type="string"
-subtype=""       type="string"      maxLength >255     dann  <textarea>  in website
+subtype=""       type="string"   maxLength >255                                  dann  <textarea>
 
 
 
 subtype="" type="integer"
 subtype="currency" type="integer"
-
+subtype="" type="integer" select="true" minValue="1" maxValue="6"                  6 * <input type="radio" value='x' >   radiobutton
+subtype="" type="integer" select="true" minValue="1" maxValue="6"                  6 * <option  value='x' >              dropdown
+subtype="" type="integer" select="true" minValue="1" maxValue="6"                  6 * <option  value='x' >              dropdown auswahl
 
 
 subtype="" type="file"
@@ -23,7 +27,7 @@ subtype="datetime" type="date"
 
 
 subtype="" type="bool"
-
+subtype="" type="bool" select="true"                                              2 * <input type="radio" value='true/false' >  radiobutton
 -------------------------------
 
 select="true"  --> Liste

@@ -12,7 +12,7 @@ url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV
 url1="https://www.govos-test.de/govos-test/go/a/301"
 # url1="https://www.govos-test.de/govos-test/go/a/288"
 delay=0.2
-user=""
+user="jp@fjd.de"
 pages=0
 first_page=""
 
@@ -42,10 +42,9 @@ def find_type(id):
         if (id == element_id):  # string vergleichen
             type = g.get('type')
             subtype = g.get('subtype')
-
             maxlength = g.get('maxLength')
-
-            return(type,subtype,maxlength)
+            select = g.get('select')
+            return(type,subtype,maxlength,select)
 
 
 def Klick(_xpath,show_info):
@@ -93,44 +92,28 @@ def count_pages():
 
 
 def fillpage():
-    all_div_inputs =  driver.find_elements_by_class_name("xf2-field-input") # alle Eingabefelder der Seite
-    for div in all_div_inputs:  # ein eingabefeld
+    all_div_inputs =  driver.find_elements_by_class_name("xf2-field-input")  # alle Eingabefelder der Seite
+    for div in all_div_inputs:                                               # aktuelles eingabefeld
         textarea = 0
         all_inputs = 0
-
         try:
-            all_inputs = div.find_elements_by_tag_name('input') # ein <input>   oder  mehrere  <input>s wenn radiobuttons
+            all_inputs = div.find_elements_by_tag_name('input')              # ein <input>   oder  mehrere  <input>s
+        except:
+            pass
+        try:
+            textarea = div.find_element_by_tag_name('textarea')              # 0 oder 1 <textarea>
         except:
             pass
 
-        try:
-            textarea = div.find_element_by_tag_name('textarea') # 0 oder 1 <textarea>
-        except:
-            pass
-
-
-        if(len(all_inputs) != 0):  # <input> vorhanden
-
-            if(len(all_inputs)>1):     #  mehr als 1 <input>  radio
+        if(len(all_inputs) != 0):                        # <input> vorhanden
+            if(len(all_inputs)>1):                       #  mehr als 1 <input>  radio
                 for input in all_inputs:
                     input.click()
-
-            # elif(all_inputs[0].get_attribute('type') == 'text'):  # 1 <input>    text email subtext
-            #     all_inputs[0].clear()
-            #     all_inputs[0].send_keys("11111")
-            # elif (all_inputs[0].get_attribute('type') == 'number'):  # 1 <input>    number
-            #     all_inputs[0].clear()
-            #     all_inputs[0].send_keys(11)
-            # elif(all_inputs[0].get_attribute('type') == 'date'):   #  1 <input>  date
-            #     all_inputs[0].clear()
-            #     driver.execute_script('arguments[0].value="2017-06-01"',all_inputs[0])
-            # elif (all_inputs[0].get_attribute('type') == 'checkbox'):  # 1 <input>  checkbox
-            #     all_inputs[0].click()
-            else:        #   1 <input>
+            else:                                        #   1 <input>
                 name = all_inputs[0].get_attribute("name")
                 name = name.lstrip("f")
-                (type,subtype,maxlength) = find_type(name) # get type , subtype from xformular
-                print(type,subtype,maxlength)
+                (type,subtype,maxlength,select) = find_type(name) # get type , subtype ,maxlength,select from xformular
+                print(type,subtype,maxlength,select)
 
                 if(type == 'string'):                      # string
                     if(subtype == ''):                     #  ''
@@ -150,10 +133,15 @@ def fillpage():
                         all_inputs[0].send_keys("DE02120300000000202051")
 
                 elif(type == 'integer'):                  # integer
-                    value="1" * int(maxlength)
-                    value=str(value)
-                    all_inputs[0].clear()
-                    all_inputs[0].send_keys(value)
+                    if (select == None):  # ''
+                        value = "1" * int(maxlength)
+                        value = str(value)
+                        all_inputs[0].clear()
+                        all_inputs[0].send_keys(value)
+                    elif (select == 'true'):  # Liste
+                        all_inputs[0].clear()
+                        all_inputs[0].send_keys(1)
+
 
                 elif(type == 'file'):
                     pass
