@@ -26,8 +26,10 @@ subtype="date" type="date"
 subtype="datetime" type="date"
 
 
-subtype="" type="bool"
+subtype="" type="bool"                                                              <input type="checkbox" >
 subtype="" type="bool" select="true"                                              2 * <input type="radio" value='true/false' >  radiobutton
+subtype="" type="bool" select="true"                                              2 * <option  value='true/false' >  dropdown
+subtype="" type="bool" select="true"                                              2 * <option  value='true/false' >  dropdown auswahl
 -------------------------------
 
 select="true"  --> Liste
