@@ -9,14 +9,21 @@ from tkinter.filedialog import askopenfilename
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
-url1="https://www.govos-test.de/govos-test/go/a/301"
-# url1="https://www.govos-test.de/govos-test/go/a/288"
-delay=0.2
-user=""
+# url1="https://www.govos-test.de/govos-test/go/a/301"
+url1="https://www.govos-test.de/govos-test/go/a/288"
+# url1="https://www.govos-test.de/govos-test/go/a/163"
+delay=0.1
+user="jp@fjd.de"
 pages=0
 first_page=""
 
 
+def log(element):
+    name = element.get_attribute("name")
+    name = name.lstrip("f")
+    (id, type, subtype, maxlength, select) = find_type(name)  # get type , subtype ,maxlength,select from xformular
+    print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" % (id, type, subtype, maxlength, select))
+    return (id, type, subtype, maxlength, select)
 
 def OpenFile():
     filename = askopenfilename(initialdir="C:/Users/jp/Downloads/",
@@ -44,7 +51,7 @@ def find_type(id):
             subtype = g.get('subtype')
             maxlength = g.get('maxLength')
             select = g.get('select')
-            return(type,subtype,maxlength,select)
+            return(id,type,subtype,maxlength,select)
 
 
 def Klick(_xpath,show_info):
@@ -93,9 +100,10 @@ def count_pages():
 
 def fillpage():
     all_div_inputs =  driver.find_elements_by_class_name("xf2-field-input")  # alle Eingabefelder der Seite
-    for div in all_div_inputs:                                               # aktuelles eingabefeld
-        textarea = 0
-        all_inputs = 0
+    for div in all_div_inputs:                                               # aktuelles eingabefeld der Seite
+        textarea = ""
+        all_inputs = ""
+        option = ""
         try:
             all_inputs = div.find_elements_by_tag_name('input')              # ein <input>   oder  mehrere  <input>s
         except:
@@ -104,16 +112,29 @@ def fillpage():
             textarea = div.find_element_by_tag_name('textarea')              # 0 oder 1 <textarea>
         except:
             pass
+        try:
+            option = div.find_elements_by_tag_name('option')                # mehrere  <option>
+        except:
+            pass
 
         if(len(all_inputs) != 0):                        # <input> vorhanden
             if(len(all_inputs)>1):                       #  mehr als 1 <input>  radio
-                for input in all_inputs:
-                    input.click()
-            else:                                        #   1 <input>
+                # (id, type, subtype, maxlength, select) = log(all_inputs[0])
+
                 name = all_inputs[0].get_attribute("name")
                 name = name.lstrip("f")
-                (type,subtype,maxlength,select) = find_type(name) # get type , subtype ,maxlength,select from xformular
-                print(type,subtype,maxlength,select)
+                (id,type,subtype,maxlength,select) = find_type(name) # get type , subtype ,maxlength,select from xformular
+                print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" %(id,type,subtype,maxlength,select))
+
+                for input in all_inputs:
+                    input.click()
+
+            else:                                        #   1 <input>
+                # (id, type, subtype, maxlength, select) = log(all_inputs[0])
+                name = all_inputs[0].get_attribute("name")
+                name = name.lstrip("f")
+                (id,type,subtype,maxlength,select) = find_type(name) # get type , subtype ,maxlength,select from xformular
+                print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" %(id,type,subtype,maxlength,select))
 
                 if(type == 'string'):                      # string
                     if(subtype == ''):                     #  ''
@@ -134,8 +155,11 @@ def fillpage():
 
                 elif(type == 'integer'):                  # integer
                     if (select == None):  # ''
-                        value = "1" * int(maxlength)
-                        value = str(value)
+                        if(maxlength != None):
+                            value = "1" * int(maxlength)
+                            value = str(value)
+                        else:
+                            value="1"
                         all_inputs[0].clear()
                         all_inputs[0].send_keys(value)
                     elif (select == 'true'):  # Liste
@@ -158,9 +182,26 @@ def fillpage():
 
 
         if(textarea):  # <textarea> vorhanden
+            # (id, type, subtype, maxlength, select) = log(textarea)
+            name = textarea.get_attribute("name")
+            name = name.lstrip("f")
+            (id, type, subtype, maxlength, select) = find_type(name)  # get type , subtype ,maxlength,select from xformular
+            print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" % (id, type, subtype, maxlength, select))
+
             textarea.clear()
             textarea.send_keys("aaaaaaaaaaaaaaaaaaaaaaa")
 
+        if (len(option) != 0):  # <option> vorhanden
+            # (id, type, subtype, maxlength, select) = log(option[1])
+            padre = option[1].find_element_by_xpath("..")
+            name = padre.get_attribute("name")
+            name = name.lstrip("f")
+            (id, type, subtype, maxlength, select) = find_type(name)  # get type , subtype ,maxlength,select from xformular
+            print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" % (id, type, subtype, maxlength, select))
+
+
+            option[1].click()
+            pass
 
 
 
@@ -183,8 +224,7 @@ while(weiter()):
     fillpage()
     Klick("//input[@value='weiter >']", True)  # weiter button
     i += 1
-    print(i)
-    if(i == 20):
+    if(i == 10):
         break
 
 # close the active tab
