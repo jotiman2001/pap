@@ -10,6 +10,8 @@ subtype=""       type="string"   maxLength >255                                 
 
 
 
+subtype="" type="integer"
+subtype="currency" type="integer"
 subtype="" type="integer"                                                           <input>
 subtype="currency" type="integer"                                                   <input>
 subtype="" type="integer" select="true" minValue="1" maxValue="6"                  6 * <input type="radio" value='x' >   radiobutton
@@ -26,6 +28,7 @@ subtype="date" type="date"
 subtype="datetime" type="date"
 
 
+subtype="" type="bool"
 subtype="" type="bool"                                                              <input type="checkbox" >
 subtype="" type="bool" select="true"                                              2 * <input type="radio" value='true/false' >  radiobutton
 subtype="" type="bool" select="true"                                              2 * <option  value='true/false' >  dropdown
@@ -33,3 +36,10 @@ subtype="" type="bool" select="true"                                            
 -------------------------------
 
 select="true"  --> Liste
+
+https://www.govos-test.de/govos-test/portal/desktop/0/edit/delete?id=3132
+//input[@value='Bestätigen']
+
+attrs = driver.execute_script('var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;', element)
+
+html = element.get_attribute('outerHTML')    then parsing

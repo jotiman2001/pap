@@ -9,21 +9,24 @@ from tkinter.filedialog import askopenfilename
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
-# url1="https://www.govos-test.de/govos-test/go/a/301"
-url1="https://www.govos-test.de/govos-test/go/a/288"
-# url1="https://www.govos-test.de/govos-test/go/a/163"
+# url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
+# url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
+# url1="https://www.govos-test.de/govos-test/go/a/163"      # BMG 008  Auskunftssperre in das Melderegister gem‰ﬂ ß 51
+url1="https://www.govos-test.de/govos-test/go/a/139"  # UVG_001_TH_FL.xf2
 delay=0.1
-user=""
+user="jp@fjd.de"
 pages=0
 first_page=""
-
+datum="2019-01-21"
 
 def log(element):
     name = element.get_attribute("name")
     name = name.lstrip("f")
-    (id, type, subtype, maxlength, select) = find_type(name)  # get type , subtype ,maxlength,select from xformular
-    print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" % (id, type, subtype, maxlength, select))
-    return (id, type, subtype, maxlength, select)
+    attrs = driver.execute_script('var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;',element)
+
+    (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = find_type(name)  # get type , subtype ,maxlength,select from xformular
+    print(" %-4s  %-8s  %-8s  %-5s  %-5s  %-5s  %-5s  %-5s  %s" % (id, type, subtype,minlength, maxlength, select,minvalue,maxvalue,attrs))
+    return (id, type, subtype,minlength, maxlength, select,minvalue,maxvalue)
 
 def OpenFile():
     filename = askopenfilename(initialdir="C:/Users/jp/Downloads/",
@@ -49,9 +52,13 @@ def find_type(id):
         if (id == element_id):  # string vergleichen
             type = g.get('type')
             subtype = g.get('subtype')
+            minlength = g.get('minLength')
             maxlength = g.get('maxLength')
             select = g.get('select')
-            return(id,type,subtype,maxlength,select)
+            maxvalue = g.get('maxValue')
+            minvalue = g.get('minValue')
+
+            return(id,type,subtype,minlength,maxlength,select,minvalue,maxvalue)
 
 
 def Klick(_xpath,show_info):
@@ -61,6 +68,7 @@ def Klick(_xpath,show_info):
         time.sleep(delay)
         if(show_info):
             print(driver.current_url, driver.title)
+            print(" %-4s  %-8s  %-8s  %-5s  %-5s  %-5s  %-5s  %-5s" % ("id", "type", "subtype","minL", "maxL", "select", "minV", "maxV"))
     except:
         pass
 
@@ -79,23 +87,6 @@ def send_user(_xpath,show_info,text):
     time.sleep(delay)
     if(show_info):
         print(driver.current_url, driver.title)
-
-
-
-def count_pages():
-    global pages
-    global first_page
-    table_body = driver.find_element_by_xpath("//table[@class='realtable jp-realtable']//tbody")
-    rows = table_body.find_elements_by_tag_name("tr")
-    anker = rows[0].find_element_by_tag_name("a")
-    link = anker.get_attribute('href')
-    reg = re.search('\?p=\d+', link)
-    rechts = (reg.group(0))
-    reg1=re.search('\d+', rechts)
-    first_page = (reg1.group(0))
-    pages = len(rows)
-
-
 
 
 def fillpage():
@@ -119,25 +110,18 @@ def fillpage():
 
         if(len(all_inputs) != 0):                        # <input> vorhanden
             if(len(all_inputs)>1):                       #  mehr als 1 <input>  radio
-                # (id, type, subtype, maxlength, select) = log(all_inputs[0])
-
-                name = all_inputs[0].get_attribute("name")
-                name = name.lstrip("f")
-                (id,type,subtype,maxlength,select) = find_type(name) # get type , subtype ,maxlength,select from xformular
-                print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" %(id,type,subtype,maxlength,select))
-
+                (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0])
                 for input in all_inputs:
                     input.click()
 
             else:                                        #   1 <input>
-                # (id, type, subtype, maxlength, select) = log(all_inputs[0])
-                name = all_inputs[0].get_attribute("name")
-                name = name.lstrip("f")
-                (id,type,subtype,maxlength,select) = find_type(name) # get type , subtype ,maxlength,select from xformular
-                print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" %(id,type,subtype,maxlength,select))
+                (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0])
 
-                if(type == 'string'):                      # string
+                if(type == 'string'):                                        # string
                     if(subtype == ''):                     #  ''
+                        all_inputs[0].clear()
+                        all_inputs[0].send_keys("werwerew")
+                    elif (subtype == None):                 # None
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("werwerew")
                     elif(subtype == 'plz'):                # plz
@@ -153,8 +137,8 @@ def fillpage():
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("DE02120300000000202051")
 
-                elif(type == 'integer'):                  # integer
-                    if (select == None):  # ''
+                elif(type == 'integer'):                                       # integer
+                    if (select == None):                   # None
                         if(maxlength != None):
                             value = "1" * int(maxlength)
                             value = str(value)
@@ -162,44 +146,40 @@ def fillpage():
                             value="1"
                         all_inputs[0].clear()
                         all_inputs[0].send_keys(value)
-                    elif (select == 'true'):  # Liste
+                    elif (select == ''):            # ''
+                        if(maxlength != None):
+                            value = "1" * int(maxlength)
+                            value = str(value)
+                        else:
+                            value="1"
+                        all_inputs[0].clear()
+                        all_inputs[0].send_keys(value)
+                    elif (select == 'true'):        # Liste
                         all_inputs[0].clear()
                         all_inputs[0].send_keys(1)
-
-
-                elif(type == 'file'):
+                elif(type == 'file'):                                         # file
                     pass
-
-                elif(type == 'date'):
+                elif(type == 'date'):                                         # date
                     all_inputs[0].clear()
-                    driver.execute_script('arguments[0].value="2017-06-01"',all_inputs[0])
-
-                elif (type == 'bool'):
-
+                    js='arguments[0].value="'
+                    js=js+datum
+                    js=js+'"'
+                    # js = 'arguments[0].value="2019-01-21"'
+                    driver.execute_script(js,all_inputs[0])
+                elif (type == 'bool'):                                         # bool
                     all_inputs[0].click()
                 else:
                     pass
 
 
         if(textarea):  # <textarea> vorhanden
-            # (id, type, subtype, maxlength, select) = log(textarea)
-            name = textarea.get_attribute("name")
-            name = name.lstrip("f")
-            (id, type, subtype, maxlength, select) = find_type(name)  # get type , subtype ,maxlength,select from xformular
-            print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" % (id, type, subtype, maxlength, select))
-
+            (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(textarea)
             textarea.clear()
             textarea.send_keys("aaaaaaaaaaaaaaaaaaaaaaa")
 
         if (len(option) != 0):  # <option> vorhanden
-            # (id, type, subtype, maxlength, select) = log(option[1])
             padre = option[1].find_element_by_xpath("..")
-            name = padre.get_attribute("name")
-            name = name.lstrip("f")
-            (id, type, subtype, maxlength, select) = find_type(name)  # get type , subtype ,maxlength,select from xformular
-            print("id %-4s type %-8s subtype %-8s maxl %-5s select %-5s" % (id, type, subtype, maxlength, select))
-
-
+            (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre)
             option[1].click()
             pass
 
@@ -224,7 +204,7 @@ while(weiter()):
     fillpage()
     Klick("//input[@value='weiter >']", True)  # weiter button
     i += 1
-    if(i == 10):
+    if(i == 31):
         break
 
 # close the active tab
