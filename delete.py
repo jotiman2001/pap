@@ -6,13 +6,13 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 edit = "https://www.govos-test.de/govos-test/portal/desktop/0/index/edit"
 delete = "https://www.govos-test.de/govos-test/portal/desktop/0/edit/delete?id="
 
-start = 3188
-end = 3195
+start = 3112  # kleinste App-ID
+end = 3143    # groesste App-ID
 
-delay=0.5
+delay=0.2
 user=""
 link_list=[]
-exception_list = []
+exception_list = []               # App-IDs die nicht gelöscht werden dürfen
 ZS=[2460,1825,1678,1415,1407,1393,1007,875,849]
 Sonst = [2730,2726,2703,2702,2699,2695,2694,2693]
 System = [848]
@@ -49,6 +49,7 @@ driver.execute_script("window.open('');")# Open a new window This does not chang
 driver.switch_to.window(driver.window_handles[1])# Switch to the new window
 driver.get(edit)
 
+
 links = driver.find_elements_by_xpath("//a[@href]")
 for link in links:
     found = re.search("delete",link.get_attribute('href')) # alle links mit delete in link_list
@@ -56,21 +57,17 @@ for link in links:
         # print(link.get_attribute('href'))
         link_list.append(link.get_attribute('href'))
 
+
 for link in link_list:
-    print(link)
-
-print(exception_list)
-
-i=start
-
-while(i<=end):
-        if i in exception_list :
-            pass
-        else:
-            print(i)
-            url_del = delete + str(i)
+    m = re.search("\d+$",link)
+    ap_id = int(m.group(0))
+    if ap_id in exception_list :
+        pass
+    else:
+        if(ap_id >= start and ap_id <= end):
+            print(ap_id)
+            url_del = delete + str(ap_id)
             driver.get(url_del)
             time.sleep(delay)
-            # Klick("//input[@value='Bestätigen']")
+            Klick("//input[@value='Bestätigen']")
 
-        i+=1
