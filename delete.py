@@ -6,8 +6,8 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 edit = "https://www.govos-test.de/govos-test/portal/desktop/0/index/edit"
 delete = "https://www.govos-test.de/govos-test/portal/desktop/0/edit/delete?id="
 
-start = 3112  # kleinste App-ID
-end = 3143    # groesste App-ID
+start = 3209  # kleinste App-ID
+end = 3224    # groesste App-ID
 
 delay=0.2
 user=""

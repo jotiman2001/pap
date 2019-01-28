@@ -11,8 +11,8 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
 
-url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
-# url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
+# url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
+url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
 # url1="https://www.govos-test.de/govos-test/go/a/163"      # BMG 008  Auskunftssperre in das Melderegister gem‰ﬂ ß 51
 # url1="https://www.govos-test.de/govos-test/go/a/139"  # UVG_001_TH_FL.xf2
 # url1="https://www.govos-test.de/govos-test/go/a/164"   # bedarf
@@ -63,6 +63,9 @@ def log(element):
     _maxle = ''
     _minv = ''
     _maxv = ''
+    _type = ''
+    _size = ''
+
 
     if(select=='true'):
         sel="ja"
@@ -94,7 +97,7 @@ def log(element):
     else:
         mav = maxvalue
 
-
+#-----------------------------------------
 
     try:
         _minle = attrs['minlength']
@@ -118,10 +121,32 @@ def log(element):
     except:
         _maxv = ''
 
+    try:
+        _type = attrs['type']
+    except:
+        _type = ''
+
+    try:
+        _size = attrs['size']
+    except:
+        _size = ''
 
 
 
-    print(" %-4s  %-8s  %-8s  %-5s  %-5s  %-5s  %-5s  %-5s         %-8s  %-5s  %-5s  %-5s  %-5s" % (id, type, sub,minle, maxle, sel,miv,mav,element.tag_name,_minle,_maxle,_minv,_maxv))
+
+
+    if(element.tag_name == "select"):   # select durch option ersetzten
+        tag = "option"
+    else:
+
+        tag = element.tag_name
+
+
+
+
+
+
+    print(" %-4s  %-8s  %-8s  %-6s  %-6s  %-6s  %-6s  %-6s          %-8s  %-6s  %-6s  %-6s" % (id, type, sub,minle, maxle, sel,miv,mav,    tag,_type,_maxle,_size))
     return (id, type, subtype,minlength, maxlength, select,minvalue,maxvalue)
 
 def OpenFile():
@@ -164,7 +189,7 @@ def Klick(_xpath,show_info):
         time.sleep(delay)
         if(show_info):
             print(driver.current_url, driver.title)
-            print(" %-4s  %-8s  %-8s  %-5s  %-5s  %-5s  %-5s  %-5s          %-8s  %-5s  %-5s  %-6s  %-5s  %-5s      " % ("id", "type", "subtype","minL", "maxL", "Liste", "minV", "maxV", "tag",'minL','maxL',"select","minV", "maxV"))
+            print(" %-4s  %-8s  %-8s  %-6s  %-6s  %-6s  %-6s  %-6s          %-8s  %-6s  %-6s  %-6s  " % ("id", "type", "subtype","minL", "maxL", "Liste", "minV", "maxV",    "tag","type",'maxL',"size"))
     except:
         pass
 
@@ -200,7 +225,7 @@ def fillpage():
         except:
             pass
         try:
-            option = div.find_elements_by_tag_name('option')                # mehrere  <option>
+            options = div.find_elements_by_tag_name('option')                # mehrere  <option>
         except:
             pass
 
@@ -274,11 +299,12 @@ def fillpage():
             textarea.clear()
             textarea.send_keys("aaaaaaaaaaaaaaaaaaaaaaa")
 
-        if (len(option) != 0):  # <option> vorhanden
-            padre = option[1].find_element_by_xpath("..")
-            (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre)
-            option[1].click()
-            pass
+        if (len(options) != 0):  # <option> vorhanden
+            for option in options:
+                padre = option.find_element_by_xpath("..")
+                (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre)
+                option.click()
+                pass
 
 
 
