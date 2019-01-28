@@ -1,5 +1,6 @@
 from selenium import webdriver
 import time
+from datetime import date,timedelta
 from selenium.webdriver.common.keys import Keys
 import re
 import xml.etree.ElementTree as ET
@@ -10,14 +11,37 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
 # url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
-# url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
+url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
 # url1="https://www.govos-test.de/govos-test/go/a/163"      # BMG 008  Auskunftssperre in das Melderegister gem‰ﬂ ß 51
-url1="https://www.govos-test.de/govos-test/go/a/139"  # UVG_001_TH_FL.xf2
+# url1="https://www.govos-test.de/govos-test/go/a/139"  # UVG_001_TH_FL.xf2
+# url1="https://www.govos-test.de/govos-test/go/a/164"   # bedarf
+
 delay=0.1
 user=""
 pages=0
 first_page=""
-datum="2019-01-21"
+td = timedelta(1)
+
+def check_error():
+    try:
+        error = driver.find_element_by_class_name("xf2-page-error")
+        span = error.find_element_by_tag_name("span")
+        message = span.get_attribute("innerHTML")
+        return message
+    except:
+        return False
+
+
+def check_eve():
+    try:
+        eve = driver.find_element_by_name("agreedchecked")
+        if (eve):                                   # Einverst‰ndniserkl‰rung
+            eve.click()
+            Klick("//input[@value='akzeptieren']",True)
+    except:
+        pass
+
+
 
 def log(element):
     name = element.get_attribute("name")
@@ -25,7 +49,76 @@ def log(element):
     attrs = driver.execute_script('var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;',element)
 
     (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = find_type(name)  # get type , subtype ,maxlength,select from xformular
-    print(" %-4s  %-8s  %-8s  %-5s  %-5s  %-5s  %-5s  %-5s  %s" % (id, type, subtype,minlength, maxlength, select,minvalue,maxvalue,attrs))
+    sel = ""
+    sub = ''
+    minle = ''
+    maxle = ''
+    miv = ''
+    mav = ''
+
+    _minle = ''
+    _maxle = ''
+    _minv = ''
+    _maxv = ''
+
+    if(select=='true'):
+        sel="ja"
+    else:
+        sel=""
+
+    if(subtype=='' or subtype==None ):
+        sub=''
+    else:
+        sub = subtype
+
+    if(minlength=='' or minlength==None ):
+        minle=''
+    else:
+        minle = minlength
+
+    if(maxlength=='' or maxlength==None ):
+        maxle=''
+    else:
+        maxle = maxlength
+
+    if(minvalue=='' or minvalue==None ):
+        miv=''
+    else:
+        miv = minvalue
+
+    if(maxvalue=='' or maxvalue==None ):
+        mav=''
+    else:
+        mav = maxvalue
+
+
+
+    try:
+        _minle = attrs['minlength']
+    except:
+        _minle = ''
+
+    try:
+        _maxle = attrs['maxlength']
+    except:
+        _maxle = ''
+
+
+
+    try:
+        _minv = attrs['minvalue']
+    except:
+        _minv = ''
+
+    try:
+        _maxv = attrs['maxvalue']
+    except:
+        _maxv = ''
+
+
+
+
+    print(" %-4s  %-8s  %-8s  %-5s  %-5s  %-5s  %-5s  %-5s         %-8s  %-5s  %-5s  %-5s  %-5s" % (id, type, sub,minle, maxle, sel,miv,mav,element.tag_name,_minle,_maxle,_minv,_maxv))
     return (id, type, subtype,minlength, maxlength, select,minvalue,maxvalue)
 
 def OpenFile():
@@ -68,7 +161,7 @@ def Klick(_xpath,show_info):
         time.sleep(delay)
         if(show_info):
             print(driver.current_url, driver.title)
-            print(" %-4s  %-8s  %-8s  %-5s  %-5s  %-5s  %-5s  %-5s" % ("id", "type", "subtype","minL", "maxL", "select", "minV", "maxV"))
+            print(" %-4s  %-8s  %-8s  %-5s  %-5s  %-5s  %-5s  %-5s          %-8s  %-5s  %-5s  %-6s  %-5s  %-5s      " % ("id", "type", "subtype","minL", "maxL", "Liste", "minV", "maxV", "tag",'minL','maxL',"select","minV", "maxV"))
     except:
         pass
 
@@ -100,7 +193,7 @@ def fillpage():
         except:
             pass
         try:
-            textarea = div.find_element_by_tag_name('textarea')              # 0 oder 1 <textarea>
+            textarea = div.find_element_by_tag_name('textarea')              # null oder ein <textarea>
         except:
             pass
         try:
@@ -110,10 +203,9 @@ def fillpage():
 
         if(len(all_inputs) != 0):                        # <input> vorhanden
             if(len(all_inputs)>1):                       #  mehr als 1 <input>  radio
-                (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0])
                 for input in all_inputs:
+                    (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(input)
                     input.click()
-
             else:                                        #   1 <input>
                 (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0])
 
@@ -160,12 +252,14 @@ def fillpage():
                 elif(type == 'file'):                                         # file
                     pass
                 elif(type == 'date'):                                         # date
+                    global datum
                     all_inputs[0].clear()
                     js='arguments[0].value="'
-                    js=js+datum
+                    js=js+str(datum)
                     js=js+'"'
                     # js = 'arguments[0].value="2019-01-21"'
                     driver.execute_script(js,all_inputs[0])
+                    datum = datum + td
                 elif (type == 'bool'):                                         # bool
                     all_inputs[0].click()
                 else:
@@ -185,6 +279,8 @@ def fillpage():
 
 
 
+
+
 dateiname = OpenFile()
 tree = ET.parse(dateiname)
 root = tree.getroot()
@@ -197,11 +293,19 @@ driver.switch_to.window(driver.window_handles[1])# Switch to the new window
 driver.get(url1)
 # count_pages()
 # driver.get(url_base+"?p="+first_page)
-Klick("//input[@value='Weiter >']", True)  # weiter button
+Klick("//input[@value='Weiter >']", True)  # Weiter button
+check_eve()                                # check auf  Einverst‰ndniserkl‰rung
 Klick("//a[@class='icon jp-button']", True)  # Assistent starten  button
 i=0
+check_eve()
 while(weiter()):
+    datum = date.today() - timedelta(9)
     fillpage()
+    if(check_error()):
+        print()
+        print("FEHLERMELDUNG: ")
+        print(check_error())
+        break
     Klick("//input[@value='weiter >']", True)  # weiter button
     i += 1
     if(i == 31):
