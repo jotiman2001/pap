@@ -10,11 +10,14 @@ from tkinter.filedialog import askopenfilename
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
-# url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
-url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
+
+url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
+# url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
 # url1="https://www.govos-test.de/govos-test/go/a/163"      # BMG 008  Auskunftssperre in das Melderegister gem‰ﬂ ß 51
 # url1="https://www.govos-test.de/govos-test/go/a/139"  # UVG_001_TH_FL.xf2
 # url1="https://www.govos-test.de/govos-test/go/a/164"   # bedarf
+# url1="https://www.govos-test.de/govos-test/go/a/304"     # tl63mo.xf2
+
 
 delay=0.1
 user=""
@@ -212,10 +215,10 @@ def fillpage():
                 if(type == 'string'):                                        # string
                     if(subtype == ''):                     #  ''
                         all_inputs[0].clear()
-                        all_inputs[0].send_keys("werwerew")
+                        all_inputs[0].send_keys("w"*15)
                     elif (subtype == None):                 # None
                         all_inputs[0].clear()
-                        all_inputs[0].send_keys("werwerew")
+                        all_inputs[0].send_keys("w"*15)
                     elif(subtype == 'plz'):                # plz
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("22233")
