@@ -6,8 +6,8 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 edit = "https://www.govos-test.de/govos-test/portal/desktop/0/index/edit"
 delete = "https://www.govos-test.de/govos-test/portal/desktop/0/edit/delete?id="
 
-start = 3209  # kleinste App-ID
-end = 3224    # groesste App-ID
+start = 3200  # kleinste App-ID
+end = 3300    # groesste App-ID
 
 delay=0.2
 user=""
@@ -45,8 +45,8 @@ driver = webdriver.Firefox()
 driver.get(login)
 send_user("//input[@name='username']",True,user)
 time.sleep(10)
-driver.execute_script("window.open('');")# Open a new window This does not change focus to the new window for the driver.
-driver.switch_to.window(driver.window_handles[1])# Switch to the new window
+# driver.execute_script("window.open('');")# Open a new window This does not change focus to the new window for the driver.
+# driver.switch_to.window(driver.window_handles[1])# Switch to the new window
 driver.get(edit)
 
 
@@ -65,7 +65,7 @@ for link in link_list:
         pass
     else:
         if(ap_id >= start and ap_id <= end):
-            print(ap_id)
+            print("delete :  "+str(ap_id))
             url_del = delete + str(ap_id)
             driver.get(url_del)
             time.sleep(delay)

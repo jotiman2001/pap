@@ -12,12 +12,13 @@ url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
 
 # url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
-url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
+# url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
 # url1="https://www.govos-test.de/govos-test/go/a/163"      # BMG 008  Auskunftssperre in das Melderegister gem‰ﬂ ß 51
 # url1="https://www.govos-test.de/govos-test/go/a/139"  # UVG_001_TH_FL.xf2
 # url1="https://www.govos-test.de/govos-test/go/a/164"   # bedarf
 # url1="https://www.govos-test.de/govos-test/go/a/304"     # tl63mo.xf2
-
+# url1 = "https://www.govos-test.de/govos-test/go/a/311"   #  wssxti   Antrag auf Belegungszeiten - Gauting
+url1 = "https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
 
 delay=0.1
 user=""
@@ -27,12 +28,18 @@ td = timedelta(1)
 
 def check_error():
     try:
-        error = driver.find_element_by_class_name("xf2-page-error")
+        error = driver.find_element_by_class_name("xf2-page-error")  # page error tritt auf
         span = error.find_element_by_tag_name("span")
         message = span.get_attribute("innerHTML")
         return message
-    except:
-        return False
+    except:                                                         # page error tritt nicht auf
+        try:
+            error = driver.find_element_by_class_name("xf2-rows-error")  #  rows error tritt auf
+            message = error.get_attribute("innerHTML")
+            return message
+        except:
+            return False                                      # rows error tritt nicht auf
+
 
 
 def check_eve():
@@ -215,7 +222,7 @@ def fillpage():
     for div in all_div_inputs:                                               # aktuelles eingabefeld der Seite
         textarea = ""
         all_inputs = ""
-        option = ""
+        options = ""
         try:
             all_inputs = div.find_elements_by_tag_name('input')              # ein <input>   oder  mehrere  <input>s
         except:
@@ -240,13 +247,13 @@ def fillpage():
                 if(type == 'string'):                                        # string
                     if(subtype == ''):                     #  ''
                         all_inputs[0].clear()
-                        all_inputs[0].send_keys("w"*15)
+                        all_inputs[0].send_keys("w"*6)
                     elif (subtype == None):                 # None
                         all_inputs[0].clear()
-                        all_inputs[0].send_keys("w"*15)
+                        all_inputs[0].send_keys("w"*6)
                     elif(subtype == 'plz'):                # plz
                         all_inputs[0].clear()
-                        all_inputs[0].send_keys("22233")
+                        all_inputs[0].send_keys("22234")
                     elif (subtype == 'email'):             # email
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("MisterX@mag-keinen-spam.de")
@@ -320,8 +327,6 @@ time.sleep(10)
 driver.execute_script("window.open('');")# Open a new window This does not change focus to the new window for the driver.
 driver.switch_to.window(driver.window_handles[1])# Switch to the new window
 driver.get(url1)
-# count_pages()
-# driver.get(url_base+"?p="+first_page)
 Klick("//input[@value='Weiter >']", True)  # Weiter button
 check_eve()                                # check auf  Einverst‰ndniserkl‰rung
 Klick("//a[@class='icon jp-button']", True)  # Assistent starten  button
