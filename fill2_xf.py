@@ -5,20 +5,24 @@ from selenium.webdriver.common.keys import Keys
 import re
 import xml.etree.ElementTree as ET
 from tkinter.filedialog import askopenfilename
+from random import *
+
 
 
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
 url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
 
-# url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
+url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
 # url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
 # url1="https://www.govos-test.de/govos-test/go/a/163"      # BMG 008  Auskunftssperre in das Melderegister gem‰ﬂ ß 51
-# url1="https://www.govos-test.de/govos-test/go/a/139"  # UVG_001_TH_FL.xf2
-# url1="https://www.govos-test.de/govos-test/go/a/164"   # bedarf
-# url1="https://www.govos-test.de/govos-test/go/a/304"     # tl63mo.xf2
-# url1 = "https://www.govos-test.de/govos-test/go/a/311"   #  wssxti   Antrag auf Belegungszeiten - Gauting
-url1 = "https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
+# url1="https://www.govos-test.de/govos-test/go/a/139"     # UVG_001_TH_FL.xf2
+# url1="https://www.govos-test.de/govos-test/go/a/164"      # bedarf
+# url1="https://www.govos-test.de/govos-test/go/a/304"      # tl63mo.xf2
+# url1 = "https://www.govos-test.de/govos-test/go/a/311"    #  wssxti   Antrag auf Belegungszeiten - Gauting
+# url1 = "https://www.govos-test.de/govos-test/go/a/233"    # gewo 26
+# url1 = "https://www.govos-test.de/govos-test/go/a/328"     # q7ebyz.xf2
+# url1="https://www.govos-test.de/govos-test/go/a/333"        #   udmalf.xf2
 
 delay=0.1
 user=""
@@ -59,6 +63,7 @@ def log(element):
     attrs = driver.execute_script('var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;',element)
 
     (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = find_type(name)  # get type , subtype ,maxlength,select from xformular
+
     sel = ""
     sub = ''
     minle = ''
@@ -247,10 +252,18 @@ def fillpage():
                 if(type == 'string'):                                        # string
                     if(subtype == ''):                     #  ''
                         all_inputs[0].clear()
-                        all_inputs[0].send_keys("w"*6)
+                        all_inputs[0].send_keys("w"*randint(5, 11))
+                        if(minlength):
+                            all_inputs[0].send_keys("w" * int(minlength))
+                        if (maxlength):
+                            all_inputs[0].send_keys("w" * int(maxlength))
                     elif (subtype == None):                 # None
                         all_inputs[0].clear()
-                        all_inputs[0].send_keys("w"*6)
+                        all_inputs[0].send_keys("w"*randint(5, 11))
+                        if (minlength):
+                            all_inputs[0].send_keys("w" * int(minlength))
+                        if (maxlength):
+                            all_inputs[0].send_keys("w" * int(maxlength))
                     elif(subtype == 'plz'):                # plz
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("22234")
