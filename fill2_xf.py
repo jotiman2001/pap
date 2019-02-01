@@ -10,19 +10,9 @@ from random import *
 
 
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
-url_overview="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2-overview/AGV-0001-GAUTING"
-url_base="https://www.govos-test.de/govos-test/portal/antrag2/2974/index/xf2/AGV-0001-GAUTING"
 
 url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
-# url1="https://www.govos-test.de/govos-test/go/a/288"    # spiel gauting GEWO-021-BY-FL
-# url1="https://www.govos-test.de/govos-test/go/a/163"      # BMG 008  Auskunftssperre in das Melderegister gem‰ﬂ ß 51
-# url1="https://www.govos-test.de/govos-test/go/a/139"     # UVG_001_TH_FL.xf2
-# url1="https://www.govos-test.de/govos-test/go/a/164"      # bedarf
-# url1="https://www.govos-test.de/govos-test/go/a/304"      # tl63mo.xf2
-# url1 = "https://www.govos-test.de/govos-test/go/a/311"    #  wssxti   Antrag auf Belegungszeiten - Gauting
-# url1 = "https://www.govos-test.de/govos-test/go/a/233"    # gewo 26
-# url1 = "https://www.govos-test.de/govos-test/go/a/328"     # q7ebyz.xf2
-# url1="https://www.govos-test.de/govos-test/go/a/333"        #   udmalf.xf2
+
 
 delay=0.1
 user=""
@@ -249,36 +239,46 @@ def fillpage():
             else:                                        #   1 <input>
                 (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0])
 
-                if(type == 'string'):                                        # string
-                    if(subtype == ''):                     #  ''
+                if(type == 'string'):                                                  # string
+                    if(subtype == ''):                                   #  ''
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("w"*randint(5, 11))
                         if(minlength):
-                            all_inputs[0].send_keys("w" * int(minlength))
+                            all_inputs[0].clear()
+                            all_inputs[0].send_keys("a" * int(minlength))
                         if (maxlength):
-                            all_inputs[0].send_keys("w" * int(maxlength))
-                    elif (subtype == None):                 # None
+                            all_inputs[0].clear()
+                            all_inputs[0].send_keys("a" * int(maxlength))
+                    elif (subtype == None):                              # None
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("w"*randint(5, 11))
                         if (minlength):
-                            all_inputs[0].send_keys("w" * int(minlength))
+                            all_inputs[0].clear()
+                            all_inputs[0].send_keys("a" * int(minlength))
                         if (maxlength):
-                            all_inputs[0].send_keys("w" * int(maxlength))
-                    elif(subtype == 'plz'):                # plz
+                            all_inputs[0].clear()
+                            all_inputs[0].send_keys("a" * int(maxlength))
+                    elif(subtype == 'plz'):                              # plz
                         all_inputs[0].clear()
-                        all_inputs[0].send_keys("22234")
-                    elif (subtype == 'email'):             # email
+                        all_inputs[0].send_keys("3" * randint(5, 11))
+                        if (minlength):
+                            all_inputs[0].clear()
+                            all_inputs[0].send_keys("2" * int(minlength))
+                        if (maxlength):
+                            all_inputs[0].clear()
+                            all_inputs[0].send_keys("3" * int(maxlength))
+                    elif (subtype == 'email'):                           # email
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("MisterX@mag-keinen-spam.de")
-                    elif (subtype == 'bic'):               # bic
+                    elif (subtype == 'bic'):                              # bic
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("BYLADEM1001")
-                    elif (subtype == 'iban'):             # iban
+                    elif (subtype == 'iban'):                            # iban
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("DE02120300000000202051")
 
-                elif(type == 'integer'):                                       # integer
-                    if (select == None):                   # None
+                elif(type == 'integer'):                                               # integer
+                    if (select == None):                                # None
                         if(maxlength != None):
                             value = "1" * int(maxlength)
                             value = str(value)
@@ -286,7 +286,7 @@ def fillpage():
                             value="1"
                         all_inputs[0].clear()
                         all_inputs[0].send_keys(value)
-                    elif (select == ''):            # ''
+                    elif (select == ''):                                # ''
                         if(maxlength != None):
                             value = "1" * int(maxlength)
                             value = str(value)
@@ -294,12 +294,12 @@ def fillpage():
                             value="1"
                         all_inputs[0].clear()
                         all_inputs[0].send_keys(value)
-                    elif (select == 'true'):        # Liste
+                    elif (select == 'true'):                            # Liste
                         all_inputs[0].clear()
                         all_inputs[0].send_keys(1)
-                elif(type == 'file'):                                         # file
+                elif(type == 'file'):                                                    # file        no functionality
                     pass
-                elif(type == 'date'):                                         # date
+                elif(type == 'date'):                                                    # date
                     global datum
                     all_inputs[0].clear()
                     js='arguments[0].value="'
@@ -308,7 +308,7 @@ def fillpage():
                     # js = 'arguments[0].value="2019-01-21"'
                     driver.execute_script(js,all_inputs[0])
                     datum = datum + td
-                elif (type == 'bool'):                                         # bool
+                elif (type == 'bool'):                                                   # bool
                     all_inputs[0].click()
                 else:
                     pass
