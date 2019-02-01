@@ -11,7 +11,7 @@ from random import *
 
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 
-url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-GAUTING  hundesteuer
+url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-
 
 
 delay=0.1
