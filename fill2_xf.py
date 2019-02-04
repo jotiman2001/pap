@@ -7,18 +7,34 @@ import xml.etree.ElementTree as ET
 from tkinter.filedialog import askopenfilename
 from random import *
 
-
-
 login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
 
-url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-
-
-
+url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
 delay=0.1
 user=""
 pages=0
 first_page=""
 td = timedelta(1)
+
+show_info = False           # Schalter  Anzeige Infos
+ids_to_variate = [19,82,83]        # IDs die variiert werden
+
+items_per_id = []          # wieviele Clicks pro ID maximal
+all_test_cases = []
+
+def create_test_cases():
+    global all_test_cases
+    pass
+
+
+def calculate_items_per_id():         # Beispiel  items_per_id = [(19,2),(22,7)......]
+    global items_per_id
+    for id_to_variate in ids_to_variate:
+        (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = find_type(str(id_to_variate))
+        if(type == "bool"):
+            items_per_id.append( (id_to_variate,2) )
+        elif (type == "integer" and select == "true") :
+            items_per_id.append((id_to_variate, int(maxvalue)))
 
 def check_error():
     try:
@@ -40,14 +56,15 @@ def check_eve():
     try:
         eve = driver.find_element_by_name("agreedchecked")
         if (eve):                                   # Einverständniserklärung
+
             eve.click()
-            Klick("//input[@value='akzeptieren']",True)
+            Klick("//input[@value='akzeptieren']",show_info)
     except:
         pass
 
 
 
-def log(element):
+def log(element,show):
     name = element.get_attribute("name")
     name = name.lstrip("f")
     attrs = driver.execute_script('var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;',element)
@@ -143,12 +160,9 @@ def log(element):
 
         tag = element.tag_name
 
+    if(show):
+        print(" %-4s  %-8s  %-8s  %-6s  %-6s  %-6s  %-6s  %-6s          %-8s  %-6s  %-6s  %-6s" % (id, type, sub,minle, maxle, sel,miv,mav,    tag,_type,_maxle,_size))
 
-
-
-
-
-    print(" %-4s  %-8s  %-8s  %-6s  %-6s  %-6s  %-6s  %-6s          %-8s  %-6s  %-6s  %-6s" % (id, type, sub,minle, maxle, sel,miv,mav,    tag,_type,_maxle,_size))
     return (id, type, subtype,minlength, maxlength, select,minvalue,maxvalue)
 
 def OpenFile():
@@ -184,12 +198,12 @@ def find_type(id):
             return(id,type,subtype,minlength,maxlength,select,minvalue,maxvalue)
 
 
-def Klick(_xpath,show_info):
+def Klick(_xpath,show):
     try:
         elem = driver.find_element_by_xpath(_xpath)
         elem.click()
         time.sleep(delay)
-        if(show_info):
+        if(show):
             print(driver.current_url, driver.title)
             print(" %-4s  %-8s  %-8s  %-6s  %-6s  %-6s  %-6s  %-6s          %-8s  %-6s  %-6s  %-6s  " % ("id", "type", "subtype","minL", "maxL", "Liste", "minV", "maxV",    "tag","type",'maxL',"size"))
     except:
@@ -234,10 +248,10 @@ def fillpage():
         if(len(all_inputs) != 0):                        # <input> vorhanden
             if(len(all_inputs)>1):                       #  mehr als 1 <input>  radio
                 for input in all_inputs:
-                    (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(input)
+                    (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(input,show_info)
                     input.click()
             else:                                        #   1 <input>
-                (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0])
+                (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0],show_info)
 
                 if(type == 'string'):                                                  # string
                     if(subtype == ''):                                   #  ''
@@ -245,19 +259,19 @@ def fillpage():
                         all_inputs[0].send_keys("w"*randint(5, 11))
                         if(minlength):
                             all_inputs[0].clear()
-                            all_inputs[0].send_keys("a" * int(minlength))
+                            all_inputs[0].send_keys("i" * int(minlength))
                         if (maxlength):
                             all_inputs[0].clear()
-                            all_inputs[0].send_keys("a" * int(maxlength))
+                            all_inputs[0].send_keys("i" * int(maxlength))
                     elif (subtype == None):                              # None
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("w"*randint(5, 11))
                         if (minlength):
                             all_inputs[0].clear()
-                            all_inputs[0].send_keys("a" * int(minlength))
+                            all_inputs[0].send_keys("i" * int(minlength))
                         if (maxlength):
                             all_inputs[0].clear()
-                            all_inputs[0].send_keys("a" * int(maxlength))
+                            all_inputs[0].send_keys("i" * int(maxlength))
                     elif(subtype == 'plz'):                              # plz
                         all_inputs[0].clear()
                         all_inputs[0].send_keys("3" * randint(5, 11))
@@ -315,24 +329,23 @@ def fillpage():
 
 
         if(textarea):  # <textarea> vorhanden
-            (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(textarea)
+            (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(textarea,show_info)
             textarea.clear()
             textarea.send_keys("aaaaaaaaaaaaaaaaaaaaaaa")
 
         if (len(options) != 0):  # <option> vorhanden
             for option in options:
                 padre = option.find_element_by_xpath("..")
-                (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre)
+                (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre,show_info)
                 option.click()
                 pass
-
-
-
 
 
 dateiname = OpenFile()
 tree = ET.parse(dateiname)
 root = tree.getroot()
+calculate_items_per_id()
+print(items_per_id)
 driver = webdriver.Firefox()
 driver.get(login)
 send_user("//input[@name='username']",True,user)
@@ -340,12 +353,13 @@ time.sleep(10)
 driver.execute_script("window.open('');")# Open a new window This does not change focus to the new window for the driver.
 driver.switch_to.window(driver.window_handles[1])# Switch to the new window
 driver.get(url1)
-Klick("//input[@value='Weiter >']", True)  # Weiter button
+Klick("//input[@value='Weiter >']", show_info)  # Weiter button
 check_eve()                                # check auf  Einverständniserklärung
-Klick("//a[@class='icon jp-button']", True)  # Assistent starten  button
+Klick("//a[@class='icon jp-button']", show_info)  # Assistent starten  button
 i=0
 check_eve()
 while(weiter()):
+
     datum = date.today() - timedelta(9)
     fillpage()
     if(check_error()):
@@ -353,7 +367,7 @@ while(weiter()):
         print("FEHLERMELDUNG: ")
         print(check_error())
         break
-    Klick("//input[@value='weiter >']", True)  # weiter button
+    Klick("//input[@value='weiter >']", show_info)  # weiter button
     i += 1
     if(i == 31):
         break
@@ -364,7 +378,6 @@ while(weiter()):
 # driver.switch_to.window(driver.window_handles[0])
 # Close the only tab, will also close the browser.
 # driver.close()
-# driver.get("https://www.govos-test.de/govos-test/portal/zs/875/vverfassung/164_1_5?p=3")
 # Klick("//input[@value='weiter >']",True) # weiter button
 # Klick("//input[@value='weiter >']",True) # weiter button
 
