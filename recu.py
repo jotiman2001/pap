@@ -19,36 +19,26 @@
 
 
 
-a=[(3,2),(14,2),(33,2)]
+a=[("a",2),("b",3),("c",4),("d",3)]
 
-le = len(a)
+def f(a,i,lista):
+    elem = a[i]
+    for j in range(1,elem[1]+1):
+        tupla=(elem[0],j)
+        lista1 = lista.copy()
+        lista1.extend([tupla])
+        if (i+1 < len(a)):
+            f(a,i+1,lista1)
+        else:
+            print(lista1)
 
-def f(laenge):
-    x=laenge-1
-    elem = a[x]
-    if (x < 0):
-        # print(b)
-        # c.append(b)
-        # b=[]
-        return (elem[0])
-
-    else:
-
-        liste_der_klicks = list(range(elem[1]))
-        for i in liste_der_klicks:
-
-            print((elem[0], i+1))
-
-        return f(laenge-1)
-
-
-f(le)
-
+result = f(a,0,[])
+print(result)
 
 
 #-------------------------------------
 
-
+#
 # a = [(3, 2), (14, 4), (23, 2)]
 #
 # b = []
