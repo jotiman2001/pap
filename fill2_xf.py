@@ -7,24 +7,44 @@ import xml.etree.ElementTree as ET
 from tkinter.filedialog import askopenfilename
 from random import *
 
-login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login
+login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login govos test
+# login ="https://govos-t.niedersachsen.de/govos/portal/desktop/0/login?cookietest=1549458814742"  # test niedersachsen'
 
+# url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-
 url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
+# url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
+# url1="https://govos-t.niedersachsen.de/govos/go/a/5"     #sta002
+
+
 delay=0.1
 user=""
 pages=0
 first_page=""
 td = timedelta(1)
 
-show_info = False           # Schalter  Anzeige Infos
-ids_to_variate = [19,82,83]        # IDs die variiert werden
+show_info = True           # Schalter  Anzeige Infos
+ids_to_variate = [19,82]        # IDs die variiert werden
 
 items_per_id = []          # wieviele Clicks pro ID maximal
 all_test_cases = []
 
-def create_test_cases():
+def create_test_cases(a,i,lista):
     global all_test_cases
-    pass
+    elem = a[i]
+    list_number_of_clicks = range(1,elem[1]+1)
+    ID = elem[0]
+
+    for clicks in list_number_of_clicks:
+
+        tupla=(ID,clicks)
+        lista1 = lista.copy()
+        lista1.append(tupla)
+
+        if (i+1 < len(a)):
+            create_test_cases(a,i+1,lista1)
+        else:
+            # print(lista1)
+            all_test_cases.append(lista1)
 
 
 def calculate_items_per_id():         # Beispiel  items_per_id = [(19,2),(22,7)......]
@@ -58,7 +78,7 @@ def check_eve():
         if (eve):                                   # Einverständniserklärung
 
             eve.click()
-            Klick("//input[@value='akzeptieren']",show_info)
+            Klick("//input[@value='zustimmen']",show_info)
     except:
         pass
 
@@ -344,8 +364,13 @@ def fillpage():
 dateiname = OpenFile()
 tree = ET.parse(dateiname)
 root = tree.getroot()
+
 calculate_items_per_id()
 print(items_per_id)
+create_test_cases(items_per_id,0,[])
+for x in all_test_cases:
+    print(x)
+
 driver = webdriver.Firefox()
 driver.get(login)
 send_user("//input[@name='username']",True,user)
