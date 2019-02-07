@@ -7,14 +7,15 @@ import xml.etree.ElementTree as ET
 from tkinter.filedialog import askopenfilename
 from random import *
 
-login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login govos test
+# login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login govos test
 # login ="https://govos-t.niedersachsen.de/govos/portal/desktop/0/login?cookietest=1549458814742"  # test niedersachsen'
+login = "https://www.navo.niedersachsen.de/navo2/portal/desktop/0/login"     #  navo produktiv
 
 # url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-
-url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
+# url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
 # url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
 # url1="https://govos-t.niedersachsen.de/govos/go/a/5"     #sta002
-
+url1 = "https://www.navo.niedersachsen.de/navo2/go/a/77"  # uvg001
 
 delay=0.1
 user=""
@@ -23,7 +24,7 @@ first_page=""
 td = timedelta(1)
 
 show_info = True           # Schalter  Anzeige Infos
-ids_to_variate = [82]        # IDs die variiert werden
+ids_to_variate = [19,82]        # IDs die variiert werden
 
 items_per_id = []          # wieviele Clicks pro ID maximal
 all_test_cases = []
@@ -246,7 +247,7 @@ def send_user(_xpath,show_info,text):
         print(driver.current_url, driver.title)
 
 
-def fillpage(click_list):
+def fillpage():
     all_div_inputs =  driver.find_elements_by_class_name("xf2-field-input")  # alle Eingabefelder der Seite
     for div in all_div_inputs:                                               # aktuelles eingabefeld der Seite
         textarea = ""
@@ -267,18 +268,9 @@ def fillpage(click_list):
 
         if(len(all_inputs) != 0):                        # <input> vorhanden
             if(len(all_inputs)>1):                       #  mehr als 1 <input>  radio
-
-
-                input_nr = 0
                 for input in all_inputs:
-                    input_nr += 1
                     (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(input,show_info)
-                    for tupel in click_list:
-                        if (id == str(tupel[0])):
-                            if (str(input_nr) == str(tupel[1])):
-                                input.click()
-
-
+                    input.click()
             else:                                        #   1 <input>
                 (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0],show_info)
 
@@ -363,55 +355,48 @@ def fillpage(click_list):
             textarea.send_keys("aaaaaaaaaaaaaaaaaaaaaaa")
 
         if (len(options) != 0):  # <option> vorhanden
-            option_nr = 0
             for option in options:
-                option_nr += 1
                 padre = option.find_element_by_xpath("..")
                 (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre,show_info)
-                for tupel in click_list:
-                    if(id == str(tupel[0])):
-                        if(str(option_nr) == str(tupel[1])):
-                            option.click()
-
+                option.click()
+                pass
 
 
 dateiname = OpenFile()
 tree = ET.parse(dateiname)
 root = tree.getroot()
 
-calculate_items_per_id()
-print(" items per ID " ,items_per_id)
-create_test_cases(items_per_id,0,[])
-for x in all_test_cases:
-    print(x)
+# calculate_items_per_id()
+# print(items_per_id)
+# create_test_cases(items_per_id,0,[])
+# for x in all_test_cases:
+#     print(x)
 
 driver = webdriver.Firefox()
 driver.get(login)
 send_user("//input[@name='username']",True,user)
 time.sleep(10)
+driver.execute_script("window.open('');")# Open a new window This does not change focus to the new window for the driver.
+driver.switch_to.window(driver.window_handles[1])# Switch to the new window
+driver.get(url1)
+Klick("//input[@value='Weiter >']", show_info)  # Weiter button
+check_eve()                                # check auf  Einverständniserklärung
+Klick("//a[@class='icon jp-button']", show_info)  # Assistent starten  button
+i=0
+check_eve()
+while(weiter()):
 
-for x in range(1,len(all_test_cases)+1):
-    driver.execute_script("window.open('');")# Open a new window This does not change focus to the new window for the driver.
-    driver.switch_to.window(driver.window_handles[x])# Switch to the new window
-    driver.get(url1)
-    Klick("//input[@value='Weiter >']", show_info)  # Weiter button
-    check_eve()                                # check auf  Einverständniserklärung
-    Klick("//a[@class='icon jp-button']", show_info)  # Assistent starten  button
-    i=0
-    check_eve()
-    while(weiter()):
-
-        datum = date.today() - timedelta(9)
-        fillpage(all_test_cases[x-1])
-        if(check_error()):
-            print()
-            print("FEHLERMELDUNG: ")
-            print(check_error())
-            break
-        Klick("//input[@value='weiter >']", show_info)  # weiter button
-        i += 1
-        if(i == 31):
-            break
+    datum = date.today() - timedelta(9)
+    fillpage()
+    if(check_error()):
+        print()
+        print("FEHLERMELDUNG: ")
+        print(check_error())
+        break
+    Klick("//input[@value='weiter >']", show_info)  # weiter button
+    i += 1
+    if(i == 31):
+        break
 
 # close the active tab
 # driver.close()
