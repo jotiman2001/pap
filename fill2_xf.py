@@ -12,18 +12,19 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login go
 
 # url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-
 # url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
-url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
+# url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
 # url1="https://govos-t.niedersachsen.de/govos/go/a/5"     #sta002
+# url1="https://www.govos-test.de/govos-test/go/a/139"     #  uvg 001
+url1="https://www.govos-test.de/govos-test/go/a/342"     # i6ulza
 
-
-delay=0.1
+delay=3.1
 user=""
 pages=0
 first_page=""
 td = timedelta(1)
 
 show_info = True           # Schalter  Anzeige Infos
-ids_to_variate = []        # IDs die variiert werden
+ids_to_variate = [1,3,4]        # IDs die variiert werden Vorauss. maxValue muss einen Wert haben (xformular.xml)
 
 items_per_id = []          # wieviele Clicks pro ID maximal
 all_test_cases = []
@@ -394,13 +395,18 @@ def fillpage(click_list=[]):
             textarea.clear()
             textarea.send_keys("aaaaaaaaaaaaaaaaaaaaaaa")
 
+
+
         if (len(options) != 0):  # <option> vorhanden
+
+            padre = options[0].find_element_by_xpath("..")
+            (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre, False)
 
             if (type == "integer"):                                           # options mit integer type
 
                 padre = options[0].find_element_by_xpath("..")
                 (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre, False)
-                if(int(id) in ids_to_variate):    # option id   ist in id-Liste
+                if(int(id) in ids_to_variate):                # option id   ist in id-Liste
                     for option in options:
                         padre = option.find_element_by_xpath("..")
                         (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre, show_info)
@@ -409,13 +415,14 @@ def fillpage(click_list=[]):
                                 value = option.get_attribute("value")
                                 if (value == str(tupel[1])):
                                     option.click()
-                else:
+                else:                                          # option id   nicht  in id-Liste
                     padre = options[0].find_element_by_xpath("..")
                     (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre, show_info)  # nur für log Ausgabe
                     for option in options:
                         value = option.get_attribute("value")
                         if(value == "1"):
                             option.click()
+
 #----------------------------bearbeiten--------------------------------------------
             else:                                                                 # options mit bool type
                 padre = options[0].find_element_by_xpath("..")
@@ -424,18 +431,27 @@ def fillpage(click_list=[]):
                     for option in options:
                         padre = option.find_element_by_xpath("..")
                         (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre, show_info)
+
                         for tupel in click_list:
                             if (id == str(tupel[0])):  # aktuelle option id  und  aktuelle tupel id sind gleich
                                 value = option.get_attribute("value")
-                                if (value == str(tupel[1])):
+                                erg = "true"
+                                if (tupel[1] == 1):
+                                    erg = "true"
+                                if (tupel[1] == 2):
+                                    erg = "false"
+
+                                if (value == erg):  # wenn richtiger option  gefunden -> klick
                                     option.click()
-                else:
+
+
+                else:                                # option id   nicht  in id-Liste
                     padre = options[0].find_element_by_xpath("..")
-                    (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre,
-                                                                                                show_info)  # nur für log Ausgabe
+                    (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre,show_info)  # nur für log Ausgabe
+
                     for option in options:
                         value = option.get_attribute("value")
-                        if (value == "1"):
+                        if (value == "true"):
                             option.click()
 #-------------------------------------------------------------------
 
