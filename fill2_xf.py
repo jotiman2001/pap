@@ -12,22 +12,36 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login go
 
 # url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-
 # url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
-# url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
+url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
 # url1="https://govos-t.niedersachsen.de/govos/go/a/5"     #sta002
 # url1="https://www.govos-test.de/govos-test/go/a/139"     #  uvg 001
-url1="https://www.govos-test.de/govos-test/go/a/342"     # i6ulza
+# url1="https://www.govos-test.de/govos-test/go/a/342"     # i6ulza
 
-delay=3.1
+delay=0.1
 user=""
 pages=0
 first_page=""
 td = timedelta(1)
-
+ansehen_link = "//span[contains(text(),'ansehen/drucken')]"
 show_info = True           # Schalter  Anzeige Infos
-ids_to_variate = [1,3,4]        # IDs die variiert werden Vorauss. maxValue muss einen Wert haben (xformular.xml)
+ids_to_variate = []        # IDs die variiert werden Vorauss. maxValue muss einen Wert haben (xformular.xml)
 
 items_per_id = []          # wieviele Clicks pro ID maximal
 all_test_cases = []
+
+
+
+def ciralli_ansehen(xpath_ansehen):
+    try:
+        ciralli_hijo = driver.find_element_by_xpath("//span[contains(text(),'ansehen/drucken')]")
+        if (ciralli_hijo):  # Einverständniserklärung
+            ciralli_padre = ciralli_hijo.find_element_by_xpath("..")
+            ciralli_padre.click()
+
+    except:
+        pass
+
+
 
 def create_test_cases(a,i,lista):
     global all_test_cases
@@ -384,7 +398,7 @@ def fillpage(click_list=[]):
                     # js = 'arguments[0].value="2019-01-21"'
                     driver.execute_script(js,all_inputs[0])
                     datum = datum + td
-                elif (type == 'bool'):                                                   # bool
+                elif (type == 'bool'):                                                   # bool  -> checkbox
                     all_inputs[0].click()
                 else:
                     pass
@@ -423,7 +437,7 @@ def fillpage(click_list=[]):
                         if(value == "1"):
                             option.click()
 
-#----------------------------bearbeiten--------------------------------------------
+
             else:                                                                 # options mit bool type
                 padre = options[0].find_element_by_xpath("..")
                 (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre, False)
@@ -453,7 +467,6 @@ def fillpage(click_list=[]):
                         value = option.get_attribute("value")
                         if (value == "true"):
                             option.click()
-#-------------------------------------------------------------------
 
 
 dateiname = OpenFile()
@@ -498,6 +511,8 @@ if(len(ids_to_variate)==0):    # keine Varianten
         i += 1
         if (i == 31):
             break
+    ciralli_ansehen(ansehen_link)
+
 else:
     for x in range(1,len(all_test_cases)+1):
         driver.execute_script("window.open('');")# Open a new window This does not change focus to the new window for the driver.
@@ -521,6 +536,8 @@ else:
             i += 1
             if(i == 31):
                 break
+        ciralli_ansehen(ansehen_link)
+
 
 # close the active tab
 # driver.close()
