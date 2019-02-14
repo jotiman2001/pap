@@ -11,8 +11,8 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login go
 # login ="https://govos-t.niedersachsen.de/govos/portal/desktop/0/login?cookietest=1549458814742"  # test niedersachsen'
 
 # url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-
-url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
-# url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
+# url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
+url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
 # url1="https://govos-t.niedersachsen.de/govos/go/a/5"     #sta002
 # url1="https://www.govos-test.de/govos-test/go/a/139"     #  uvg 001
 # url1="https://www.govos-test.de/govos-test/go/a/342"     # i6ulza
@@ -24,7 +24,7 @@ first_page=""
 td = timedelta(1)
 ansehen_link = "//span[contains(text(),'ansehen/drucken')]"
 show_info = True           # Schalter  Anzeige Infos
-ids_to_variate = []        # IDs die variiert werden Vorauss. maxValue muss einen Wert haben (xformular.xml)
+ids_to_variate = [32]        # IDs die variiert werden Vorauss. maxValue muss einen Wert haben (xformular.xml)
 
 items_per_id = []          # wieviele Clicks pro ID maximal
 all_test_cases = []
@@ -436,8 +436,8 @@ def fillpage(click_list=[]):
                             if (id == str(tupel[0])):  # aktuelle option id  und  aktuelle tupel id sind gleich
                                 value = option.get_attribute("value")
                                 if (value == str(tupel[1])):
-                                    driver.execute_script("arguments[0].click();", option)
-                                    # option.click()
+                                    # driver.execute_script("arguments[0].click();", option)
+                                    option.click()
                 else:                                          # option id   nicht  in id-Liste
                     padre = options[0].find_element_by_xpath("..")
                     (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre, show_info)  # nur für log Ausgabe
@@ -468,8 +468,8 @@ def fillpage(click_list=[]):
                                     erg = "false"
 
                                 if (value == erg):  # wenn richtiger option  gefunden -> klick
-                                    driver.execute_script("arguments[0].click();", option)
-                                    # option.click()
+                                    # driver.execute_script("arguments[0].click();", option)
+                                    option.click()
 
 
                 else:                                # option id   nicht  in id-Liste
@@ -479,8 +479,8 @@ def fillpage(click_list=[]):
                     for option in options:
                         value = option.get_attribute("value")
                         if (value == "true"):
-                            driver.execute_script("arguments[0].click();", option)
-                            # option.click()
+                            # driver.execute_script("arguments[0].click();", option)
+                            option.click()
 
 
 dateiname = OpenFile()
