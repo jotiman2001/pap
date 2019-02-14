@@ -11,12 +11,12 @@ login = "https://www.govos-test.de/govos-test/portal/desktop/0/login" # Login go
 # login ="https://govos-t.niedersachsen.de/govos/portal/desktop/0/login?cookietest=1549458814742"  # test niedersachsen'
 
 # url1="https://www.govos-test.de/govos-test/go/a/301"   #AGV-0001-
-# url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
-url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
+url1="https://www.govos-test.de/govos-test/go/a/233"   # gewo 26
+# url1="https://www.govos-test.de/govos-test/go/a/288"     # gewo 21
 # url1="https://govos-t.niedersachsen.de/govos/go/a/5"     #sta002
 # url1="https://www.govos-test.de/govos-test/go/a/139"     #  uvg 001
 # url1="https://www.govos-test.de/govos-test/go/a/342"     # i6ulza
-
+# url1="https://www.govos-test.de/govos-test/go/a/304"    #  tl63
 delay=0.1
 user=""
 pages=0
@@ -88,11 +88,13 @@ def check_error():
 
 
 def check_eve():
+
     try:
         eve = driver.find_element_by_name("agreedchecked")
         if (eve):                                   # Einverständniserklärung
 
-            eve.click()
+            # eve.click()
+            driver.execute_script("arguments[0].click();", eve)
             Klick("//input[@value='zustimmen']",show_info)
     except:
         pass
@@ -294,13 +296,15 @@ def fillpage(click_list=[]):
                                 if (id == str(tupel[0])):
                                     value = input.get_attribute("value")
                                     if (value == str(tupel[1])):   # wenn richtiger radio gefunden -> klick
-                                        input.click()
+                                        driver.execute_script("arguments[0].click();", input)
+                                        # input.click()
                     else:                             # input id nicht in id Liste
                         (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0], show_info)  # nur für log Ausgabe
                         for input in all_inputs:
                             value = input.get_attribute("value")
                             if (value == "1"):
-                                input.click()
+                                driver.execute_script("arguments[0].click();", input)
+                                # input.click()
                 else:                                                                             # radios mit bool type
                     if (int(id) in ids_to_variate):  # input id   ist in id-Liste
                         for input in all_inputs:
@@ -316,14 +320,17 @@ def fillpage(click_list=[]):
                                         erg = "false"
 
                                     if (value == erg):  # wenn richtiger radio gefunden -> klick
-                                        input.click()
+                                        driver.execute_script("arguments[0].click();", input)
+                                        # input.click()
                     else:                           # input id nicht in id Liste
                         (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(all_inputs[0],show_info)  # nur für log Ausgabe
 
                         for input in all_inputs:
                             value = input.get_attribute("value")
                             if (value == "true"):
-                                input.click()
+                                # input.click()
+                                driver.execute_script("arguments[0].click();", input)
+
 
 
             else:                                        #   1 <input>
@@ -399,7 +406,8 @@ def fillpage(click_list=[]):
                     driver.execute_script(js,all_inputs[0])
                     datum = datum + td
                 elif (type == 'bool'):                                                   # bool  -> checkbox
-                    all_inputs[0].click()
+                    # all_inputs[0].click()
+                    driver.execute_script("arguments[0].click();", all_inputs[0])
                 else:
                     pass
 
@@ -428,13 +436,17 @@ def fillpage(click_list=[]):
                             if (id == str(tupel[0])):  # aktuelle option id  und  aktuelle tupel id sind gleich
                                 value = option.get_attribute("value")
                                 if (value == str(tupel[1])):
-                                    option.click()
+                                    driver.execute_script("arguments[0].click();", option)
+                                    # option.click()
                 else:                                          # option id   nicht  in id-Liste
                     padre = options[0].find_element_by_xpath("..")
                     (id, type, subtype, minlength, maxlength, select, minvalue, maxvalue) = log(padre, show_info)  # nur für log Ausgabe
                     for option in options:
                         value = option.get_attribute("value")
                         if(value == "1"):
+                            # driver.execute_script("arguments[0].scrollIntoView();", option)
+                            # driver.execute_script("arguments[0].click();", option)
+
                             option.click()
 
 
@@ -456,7 +468,8 @@ def fillpage(click_list=[]):
                                     erg = "false"
 
                                 if (value == erg):  # wenn richtiger option  gefunden -> klick
-                                    option.click()
+                                    driver.execute_script("arguments[0].click();", option)
+                                    # option.click()
 
 
                 else:                                # option id   nicht  in id-Liste
@@ -466,7 +479,8 @@ def fillpage(click_list=[]):
                     for option in options:
                         value = option.get_attribute("value")
                         if (value == "true"):
-                            option.click()
+                            driver.execute_script("arguments[0].click();", option)
+                            # option.click()
 
 
 dateiname = OpenFile()
